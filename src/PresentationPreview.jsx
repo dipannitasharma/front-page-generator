@@ -22,7 +22,7 @@ const PresentationPreview = ({ formData }) => {
           <div className="flex flex-col items-center">
             <img src="./future.png" alt="FIEM Logo" className="h-16 mb-2" />
 
-            <h2 className="text-lg font-bold">
+            <h2 className="text-lg font-bold text-[#000099]">
               FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
             </h2>
 
