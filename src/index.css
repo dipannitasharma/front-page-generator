@@ -1,0 +1,5 @@
+@import "tailwindcss";
+/* College-safe font */
+.font-times {
+  font-family: "Times New Roman", Times, serif;
+}
