@@ -9,6 +9,7 @@ import ReportPDF from "./components/pdfs/ReportPDF";
 import PresentationPDF from "./components/pdfs/PresentationPDF";
 
 import generatePPTX from "./components/ppts/generatePPTX";
+import Header from "./components/Header";
 
 const App = () => {
   const [formData, setFormData] = useState({
@@ -27,9 +28,10 @@ const App = () => {
 
   return (
     <div className="bg-gray-100 min-h-screen">
+      <Header />
 
       {/* MAIN WRAPPER */}
-      <div className="flex flex-col lg:flex-row min-h-screen">
+      <div className="flex flex-col lg:flex-row min-h-screen mt-10">
 
 
         {/* ================= LEFT PANEL ================= */}
@@ -47,7 +49,7 @@ const App = () => {
         >
 
           {/* FORM */}
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-y-auto p-4 mt-15">
 
             <div className="bg-white rounded-xl shadow-md border p-4">
 
@@ -109,7 +111,7 @@ const App = () => {
           className="
             flex-1
             lg:ml-120
-            bg-gray-300
+           
             flex
             justify-center
             items-start
