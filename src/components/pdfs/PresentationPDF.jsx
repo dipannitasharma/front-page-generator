@@ -208,8 +208,8 @@ const PresentationPDF = ({ data }) => {
           {/* ================= BOTTOM ================= */}
           <View style={styles.bottom}>
           
-                      <Text style={styles.submitted}>
-                        SUBMITTED BY
+                      <Text style={styles.presented}>
+                        PRESENTED BY
                       </Text>
           
                       <Text style={{ ...styles.name, marginTop: 5 }}>
