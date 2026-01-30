@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
     fontWeight: "bold",
     fontFamily: "TimesNewRoman",
+    textTransform: "uppercase",
   },
 
   submitted: {
