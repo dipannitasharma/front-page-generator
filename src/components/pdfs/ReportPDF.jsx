@@ -11,21 +11,14 @@ import {
 } from "@react-pdf/renderer";
 
 import logo from "../../assets/future.png";
-import TIMES from "../../assets/fonts/TIMES.ttf";
-import TIMES_BOLD from "../../assets/fonts/TIMESBD.ttf";
+import TIMES from "../../assets/fonts/TIMES.TTF";
+import TIMES_BOLD from "../../assets/fonts/TIMESBD.TTF";
 Font.register({
   family: "TimesNewRoman",
   fonts: [
     { src: TIMES, fontWeight: "normal" },
     { src: TIMES_BOLD, fontWeight: "bold" },
   ],
-});
-
-
-/* REGISTER TIMES NEW ROMAN */
-Font.register({
-  family: "TimesNewRoman",
-  src: TIMES,
 });
 
 const styles = StyleSheet.create({
