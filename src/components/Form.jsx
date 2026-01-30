@@ -40,7 +40,7 @@ const Form = ({ formData, setFormData }) => {
 
       {/* Inputs */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input className="p-2 border rounded" placeholder="Title of the Presentation or Report"
+        <input className="p-2 border rounded" placeholder="Title"
           value={formData.title}
           onChange={(e)=>setFormData({...formData,title:e.target.value})}
         />
@@ -52,15 +52,15 @@ const Form = ({ formData, setFormData }) => {
           value={formData.subject_code}
           onChange={(e)=>setFormData({...formData,subject_code:e.target.value})}
         />
-        <input className="p-2 border rounded" placeholder="Academic Session"
+        <input className="p-2 border rounded" placeholder="Session"
           value={formData.session}
           onChange={(e)=>setFormData({...formData,session:e.target.value})}
         />
-        <input className="p-2 border rounded" placeholder="Student Name"
+        <input className="p-2 border rounded" placeholder="Name"
           value={formData.name}
           onChange={(e)=>setFormData({...formData,name:e.target.value})}
         />
-        <input className="p-2 border rounded" placeholder="University Roll Number"
+        <input className="p-2 border rounded" placeholder="Roll"
           value={formData.university_roll}
           onChange={(e)=>setFormData({...formData,university_roll:e.target.value})}
         />
@@ -76,7 +76,7 @@ const Form = ({ formData, setFormData }) => {
           value={formData.department}
           onChange={(e)=>setFormData({...formData,department:e.target.value})}
         />
-        <input className="p-2 border rounded" placeholder="Teacher Name"
+        <input className="p-2 border rounded" placeholder="Teacher"
           value={formData.teacher_name}
           onChange={(e)=>setFormData({...formData,teacher_name:e.target.value})}
         />

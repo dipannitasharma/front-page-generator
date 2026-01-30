@@ -2,25 +2,19 @@ import React from "react";
 
 const PresentationPreview = ({ formData }) => {
   return (
-    /* RESPONSIVE WRAPPER */
     <div className="w-full overflow-x-auto flex justify-center">
-
-      {/* SCALE CONTROLLER */}
-      <div
-        className="
-          origin-top
-          scale-[0.7]
-          sm:scale-[0.8]
-          md:scale-[0.9]
-          lg:scale-100
-        "
-      >
-        {/* ACTUAL SLIDE (FIXED SIZE) */}
-        <div className="w-[960px] h-[540px] bg-white my-8 p-10 shadow-lg flex flex-col justify-between text-center">
-
+      {/* PREVIEW SCALE ONLY */}
+      <div className="origin-top scale-[0.7] sm:scale-[0.8] md:scale-[0.9] lg:scale-100">
+        
+        {/* EXPORT SAFE SLIDE */}
+        <div
+          id="presentation-slide"
+          className="w-[960px] h-[540px] bg-white my-8 p-10 flex flex-col justify-between text-center"
+          style={{ transform: "none" }}
+        >
           {/* TOP BLOCK */}
           <div className="flex flex-col items-center">
-            <img src="./future.png" alt="FIEM Logo" className="h-16 mb-2" />
+            <img src="/future.png" alt="FIEM Logo" className="h-16 mb-2" />
 
             <h2 className="text-lg font-bold text-[#000099]">
               FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
@@ -31,7 +25,7 @@ const PresentationPreview = ({ formData }) => {
             <p className="text-sm font-bold">MAKAUT, WB</p>
           </div>
 
-          {/* TITLE + SUBJECT */}
+          {/* TITLE */}
           <div>
             <h1 className="text-lg uppercase mt-2">
               {formData.title || "TITLE OF THE PRESENTATION"}
@@ -54,29 +48,19 @@ const PresentationPreview = ({ formData }) => {
             </p>
           </div>
 
-          {/* STUDENT DETAILS */}
+          {/* STUDENT */}
           <div>
-            <p className="text-sm text-[#A50021] font-bold">
-              PRESENTED BY
-            </p>
+            <p className="text-sm text-[#A50021] font-bold">PRESENTED BY</p>
 
             <p className="text-lg uppercase">
               {formData.name || "STUDENT NAME"}
             </p>
 
-            <p>
-              {formData.university_roll || "ROLL NO"}
-            </p>
+            <p>{formData.university_roll || "ROLL NO"}</p>
 
             <p className="text-[#0033CC] font-semibold">
-              <span className="text-gray-500">
-                {formData.year}
-              </span>{" "}
-              Year :{" "}
-              <span className="text-gray-500">
-                {formData.semester}
-              </span>{" "}
-              Semester
+              <span className="text-gray-500">{formData.year}</span> Year :
+              <span className="text-gray-500"> {formData.semester}</span> Semester
             </p>
 
             <p className="uppercase text-sm">
@@ -90,7 +74,6 @@ const PresentationPreview = ({ formData }) => {
               Name of the Teacher: {formData.teacher_name || ""}
             </p>
           </div>
-
         </div>
       </div>
     </div>
