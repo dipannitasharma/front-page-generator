@@ -128,11 +128,18 @@ const styles = StyleSheet.create({
   },
 
   year: {
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#0033CC",
-    marginBottom: 3,
-  },
+  fontSize: 14,
+  fontWeight: "bold",
+  marginBottom: 3,
+  textAlign: "center",
+  color: "#0033CC",
+},
+
+
+gray: {
+  color: "#6B7280",   // Tailwind gray-500
+},
+
 
   dept: {
     fontSize: 13,
@@ -220,9 +227,26 @@ const PresentationPDF = ({ data }) => {
                         {data.university_roll || "UNIVERSITY ROLL NO."}
                       </Text>
           
-                      <Text style={{ ...styles.year, marginTop: 5 }}>
-                        {data.year} Year : {data.semester} Semester
-                      </Text>
+                       <View style={{ flexDirection: "row", marginTop: 10 }}>
+                      
+                        <Text style={[styles.year, styles.gray]}>
+                          {data.year}
+                        </Text>
+                      
+                        <Text style={styles.year}>
+                          {" "}Year :{" "}
+                        </Text>
+                      
+                        <Text style={[styles.year, styles.gray]}>
+                          {data.semester}
+                        </Text>
+                      
+                        <Text style={styles.year}>
+                          {" "}Semester
+                        </Text>
+                      
+                      </View>
+
           
                       <Text style={{ ...styles.dept, marginTop: 5 }}>
                         {data.department || "DEPARTMENT"}

@@ -148,6 +148,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#0033CC",
   },
+  gray: {
+  color: "#6B7280",   // Tailwind gray-500
+},
 
   dept: {
     marginTop: 5,
@@ -251,13 +254,26 @@ const ReportPDF = ({ data }) => {
               {data.university_roll || "UNIVERSITY ROLL NO."}
             </Text>
 
-            <Text style={{ ...styles.year, marginTop: 10 }}>
-              {data.year} Year : {data.semester} Semester
-            </Text>
+           <View style={{ flexDirection: "row", marginTop: 10 }}>
 
-            <Text style={{ ...styles.dept, marginTop: 10 }}>
-              {data.department || "DEPARTMENT"}
-            </Text>
+  <Text style={[styles.year, styles.gray]}>
+    {data.year}
+  </Text>
+
+  <Text style={styles.year}>
+    {" "}Year :{" "}
+  </Text>
+
+  <Text style={[styles.year, styles.gray]}>
+    {data.semester}
+  </Text>
+
+  <Text style={styles.year}>
+    {" "}Semester
+  </Text>
+
+</View>
+
 
             <Text style={{ ...styles.teacher, marginTop: 15 }}>
               NAME OF THE TEACHER: {data.teacher_name || ""}

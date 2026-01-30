@@ -16,7 +16,7 @@ const generatePPTX = (data) => {
   slide.background = { fill: "FFFFFF" };
 
   slide.addImage({
-    path: "src/assets/future.png",
+    path: "./assets/future.png",
     x: 5.3,
     y: 0.3,
     w: 2,

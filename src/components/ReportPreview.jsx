@@ -9,7 +9,7 @@ const ReportPreview = ({ formData }) => {
         {/* EXPORT SAFE A4 */}
         <div
           id="report-a4"
-          className="w-[210mm] bg-white px-12 py-10 text-center"
+          className="w-[210mm]  bg-white px-12 py-10 text-center"
           style={{ transform: "none" }}
         >
           <div className="flex flex-col items-center mt-8">
@@ -31,15 +31,15 @@ const ReportPreview = ({ formData }) => {
           </div>
 
           <div className="mt-10">
-            <p className="font-bold text-2xl text-[#0000FF]">
+            <p className="font-bold text-2xl text-[#0000FF] font-times">
               CONTINUOUS ASSESSMENT #{formData.assessment === "CA1" ? "1" : "2"}
             </p>
 
-            <p className="mt-2 font-bold">
+            <p className="mt-2 font-bold font-times">
               {formData.subject_name || "SUBJECT NAME"}
             </p>
 
-            <p className="mt-1 text-sm font-bold">
+            <p className="mt-1 text-sm font-bold font-times">
               {formData.subject_code || "SUBJECT CODE"}
             </p>
           </div>
@@ -52,25 +52,26 @@ const ReportPreview = ({ formData }) => {
           </div>
 
           <div className="mt-10">
-            <p className="text-2xl text-[#A50021] font-bold">SUBMITTED BY</p>
+            <p className="text-2xl text-[#A50021] font-bold font-times">SUBMITTED BY</p>
 
-            <p className="mt-3 text-lg font-semibold uppercase">
+            <p className="mt-3 text-lg font-semibold font-times uppercase">
               {formData.name || "NAME OF THE STUDENT"}
             </p>
 
             <p>{formData.university_roll || "UNIVERSITY ROLL NO."}</p>
 
-            <p className="mt-2 text-lg font-semibold text-[#0033CC]">
-              {formData.year} Year : {formData.semester} Semester
+            <p className="text-[#0033CC] font-semibold">
+              <span className="text-gray-500">{formData.year}</span> Year :
+              <span className="text-gray-500"> {formData.semester}</span> Semester
             </p>
 
-            <p className="mt-2 uppercase">
+            <p className="mt-2 uppercase font-times">
               {formData.department || "DEPARTMENT"}
             </p>
           </div>
 
           <div className="mt-6">
-            <p className="font-semibold uppercase">
+            <p className="font-semibold uppercase font-times">
               Name of the Teacher: {formData.teacher_name || ""}
             </p>
           </div>
