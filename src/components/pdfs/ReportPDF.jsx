@@ -209,15 +209,13 @@ const ReportPDF = ({ data }) => {
       CONTINUOUS ASSESSMENT #2
     </Text>
 
-    <View style={{ marginTop: 6,textAlign: "center" }}>
-      <Text style={styles.subject}>
-        {data.subject_name || "SUBJECT NAME"}
-      </Text>
-
-      <Text style={styles.subject}>
-        {data.subject_code || "SUBJECT CODE"}
-      </Text>
-    </View>
+    <Text style={styles.subject}>
+                  {data.subject_name || "SUBJECT NAME"}
+                </Text>
+    
+                <Text style={styles.subject}>
+                  {data.subject_code || "SUBJECT CODE"}
+                </Text>
 
   </View>
 
