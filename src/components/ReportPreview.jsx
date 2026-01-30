@@ -4,7 +4,8 @@ const ReportPreview = ({ formData }) => {
   return (
     <div className="w-full overflow-x-auto flex justify-center">
       {/* PREVIEW SCALE ONLY */}
-      <div className="origin-top scale-[0.6] sm:scale-[0.7] md:scale-[0.85] lg:scale-100">
+      <div className="origin-top">
+
 
         {/* EXPORT SAFE A4 */}
         <div
