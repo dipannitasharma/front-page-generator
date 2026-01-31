@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import Form from "./components/Form";
@@ -26,20 +26,57 @@ const App = () => {
     assessment: "CA1",
   });
 
+  /* ================= SCALE STATE ================= */
+  const [scale, setScale] = useState(1);
+
+  /* ================= AUTO SCALE ================= */
+  useEffect(() => {
+    function resize() {
+      const screenW = window.innerWidth;
+      const screenH = window.innerHeight;
+
+      // CA1 = PPT (16:9)
+      const pptW = 960;
+      const pptH = 540;
+
+      // CA2 = A4
+      const a4W = 794;
+      const a4H = 900;
+
+      const pageW =
+        formData.assessment === "CA1" ? pptW : a4W;
+
+      const pageH =
+        formData.assessment === "CA1" ? pptH : a4H;
+
+      const scaleW = screenW / pageW;
+      const scaleH = screenH / pageH;
+
+      const newScale = Math.min(scaleW, scaleH, 1);
+
+      setScale(newScale);
+    }
+
+    resize();
+
+    window.addEventListener("resize", resize);
+
+    return () => window.removeEventListener("resize", resize);
+  }, [formData.assessment]);
+
   return (
     <div className="bg-gray-100 min-h-screen">
       <Header />
 
-      {/* MAIN WRAPPER */}
+      {/* ================= MAIN WRAPPER ================= */}
       <div className="flex flex-col lg:flex-row min-h-screen mt-10">
-
 
         {/* ================= LEFT PANEL ================= */}
         <div
           className="
             w-full
             lg:fixed lg:top-0 lg:left-0
-            lg:h-screen lg:w-[480px]
+            lg:h-screen lg:w-120
             bg-white
             shadow-xl
             flex flex-col
@@ -47,7 +84,6 @@ const App = () => {
             z-20
           "
         >
-
           {/* FORM */}
           <div className="flex-1 overflow-y-auto p-4 mt-15">
 
@@ -59,14 +95,12 @@ const App = () => {
               />
 
             </div>
+         
 
-          </div>
+          {/* ================= BUTTON BAR ================= */}
+          <div className="p-3 bg-white shadow-inner flex flex-wrap gap-2 justify-center">
 
-
-          {/* BUTTON BAR */}
-          <div className="p-3 bg-white border-t shadow-inner flex flex-wrap gap-2 justify-center">
-
-            {/* PPTX */}
+            {/* PPTX DOWNLOAD */}
             {formData.assessment === "CA1" && (
               <button
                 onClick={() => generatePPTX(formData)}
@@ -76,7 +110,7 @@ const App = () => {
               </button>
             )}
 
-            {/* PDF */}
+            {/* PDF DOWNLOAD */}
             <PDFDownloadLink
               document={
                 formData.assessment === "CA1" ? (
@@ -104,6 +138,7 @@ const App = () => {
           </div>
 
         </div>
+         </div>
 
 
         {/* ================= RIGHT PREVIEW ================= */}
@@ -111,44 +146,38 @@ const App = () => {
           className="
             flex-1
             lg:ml-120
-           
             flex
             justify-center
             items-start
-            p-3 sm:p-4
+            p-3
             overflow-auto
           "
         >
 
-          {/* SCALE WRAPPER */}
+          {/* SCALE CONTAINER */}
           <div
-            className="flex justify-center w-full"
             style={{
-              transform:
-                formData.assessment === "CA2"
-                  ? "scale(min(1, (90vw / 794), (85vh / 1123)))"
-                  : "scale(min(1, (95vw / 960), (85vh / 540)))",
-
+              transform: `scale(${scale})`,
               transformOrigin: "top center",
             }}
           >
 
             {/* PAGE FRAME */}
             <div
-              className={`
-                bg-white
-                shadow-2xl
-                rounded-sm
-                md:flex
-                hidden
-                justify-center
-                items-center
-                ${
+              className="bg-white shadow-2xl rounded-sm flex justify-center overflow-hidden"
+
+              style={{
+                width:
                   formData.assessment === "CA1"
-                    ? "w-[960px] aspect-video"
-                    : "w-fit max-w-3xl h-280.75"
-                }
-              `}
+                    ? "960px"
+                    : "794px",
+
+                height:
+                  formData.assessment === "CA1"
+                    ? "540px"
+                    :  "900px"
+,
+              }}
             >
 
               {/* CONTENT */}
@@ -165,7 +194,6 @@ const App = () => {
         </div>
 
       </div>
-
     </div>
   );
 };
