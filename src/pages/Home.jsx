@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 
 import Form from "../components/Form";
@@ -12,8 +12,9 @@ import generatePPTX from "../components/ppts/generatePPTX";
 
 const HEADER_HEIGHT = 64;
 
-const PPT = { w: 960, h: 540 };
-const A4 = { w: 794, h: 1123 };
+// Virtual canvas (for view only)
+const PPT = { w: 960, h: 600 };
+const A4 = { w: 800, h: 900 };
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -30,21 +31,71 @@ const Home = () => {
     assessment: "CA1",
   });
 
+  const [scale, setScale] = useState(1);
+
+  const previewRef = useRef(null);
+
+  /* VIEW MODE SCALE */
+ useEffect(() => {
+  const resize = () => {
+    if (!previewRef.current) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    const page =
+      formData.assessment === "CA1" ? PPT : A4;
+
+    const wrap = previewRef.current;
+
+    const maxW = wrap.clientWidth - 24;
+    const maxH =
+      window.innerHeight - HEADER_HEIGHT - 60;
+
+    let scaleW = maxW / page.w;
+    let scaleH = maxH / page.h;
+
+    let final;
+
+    // 👉 REPORT: Fit by HEIGHT only (no scroll)
+    if (formData.assessment === "CA2") {
+      final = scaleH;
+    }
+    // 👉 PPT: Normal fit
+    else {
+      final = Math.min(scaleW, scaleH);
+    }
+
+    if (isMobile) final *= 0.95;
+
+    if (final > 1) final = 1;
+
+    setScale(final);
+  };
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  return () =>
+    window.removeEventListener("resize", resize);
+}, [formData.assessment]);
+
+
   const page =
     formData.assessment === "CA1" ? PPT : A4;
 
   return (
-    <div
-      className="
-        min-h-screen
-        bg-[#0f0f0f]
-        px-3 py-4 lg:p-8
-      "
-     
-    >
+  <div className="h-screen bg-[#0f0f0f] overflow-hidden">
+    
+    {/* HEADER SPACE
+    <div style={{ height: HEADER_HEIGHT }} /> */}
+
+    {/* MAIN AREA */}
+    <div className="h-[calc(100vh-64px)] px-3 lg:px-8 py-4">
+
       <div
         className="
-          max-w-400
+          h-full
+          max-w-450
           mx-auto
           flex
           flex-col
@@ -61,9 +112,8 @@ const Home = () => {
             rounded-2xl
             flex
             flex-col
-            lg:sticky
-            top-24
-            max-h-[calc(100vh-120px)]
+            h-full
+            lg:h-fit
           "
         >
           {/* FORM */}
@@ -77,7 +127,7 @@ const Home = () => {
           </div>
 
           {/* BUTTONS */}
-          <div className="p-4 flex gap-3 justify-center bg-[#3d3d3d] rounded-b-2xl">
+          <div className="p-6 m-6 flex gap-3 justify-center bg-[#3d3d3d] rounded-2xl">
 
             {formData.assessment === "CA1" && (
               <button
@@ -112,26 +162,35 @@ const Home = () => {
         </div>
 
         {/* ================= RIGHT ================= */}
-        <div
-          className="
-            flex-1
-            bg-[#0F0F0F]
-            rounded-xl
-            overflow-auto
+<div
+  ref={previewRef}
+  className="
+    flex-1
+    bg-[#0F0F0F]
+    rounded-2xl
+    h-full
+    flex
+    justify-center
+    items-center
+    overflow-hidden
+  "
+>
 
-          "
-        >
-          {/* CENTER */}
-          <div className="flex justify-center ">
+
+          {/* SCALE WRAPPER */}
+          <div
+          className="flex justify-center items-center"
+            style={{
+              transform: `scale(${scale})`,
+              transformOrigin: "center center",
+            }}
+          >
+            {/* PAGE */}
             <div
-              className="
-                scale-80
-                shadow-2xl
-                overflow-hidden
-              "
+              className="bg-white mb-10 overflow-hidden"
               style={{
                 width: page.w,
-                minHeight: page.h,
+                height: page.h,
               }}
             >
               {formData.assessment === "CA1" ? (
@@ -145,7 +204,9 @@ const Home = () => {
 
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Home;

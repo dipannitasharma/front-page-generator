@@ -24,7 +24,7 @@ const ReportPreview = ({ formData }) => {
           className="h-24 mb-5 object-contain"
         />
 
-        <h2 className="text-lg font-bold text-[#000099]">
+        <h2 className="lg:text-xl text-mid  font-bold text-[#000099]">
           FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
         </h2>
 
@@ -35,7 +35,7 @@ const ReportPreview = ({ formData }) => {
 
       {/* ================= TITLE ================= */}
       <div className="mt-14">
-        <h1 className="text-2xl tracking-wide uppercase leading-snug">
+        <h1 className="text-xl tracking-wide uppercase leading-snug">
           {formData.title || "TITLE OF THE PRESENTATION"}
         </h1>
       </div>
