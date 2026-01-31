@@ -7,7 +7,7 @@ const ReportPreview = ({ formData }) => {
       {/* A4 INNER PAGE */}
       <div
   id="report-a4"
-  className="w-full h-full bg-white px-12 py-10 text-center flex flex-col justify-center"
+  className="w-full h-full bg-[#f0f0f0] px-12 py-10 text-center flex flex-col justify-center"
 >
 
 

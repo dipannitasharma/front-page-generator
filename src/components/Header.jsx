@@ -5,22 +5,29 @@ const Header = () => {
     <header
       className="
         w-full
-        bg-white
-        border-b
-        border-gray-200
-        shadow-sm
-        px-4 sm:px-6
-        py-3
-        flex
-        items-center
-        justify-between
         sticky
         top-0
         z-30
+
+        backdrop-blur-md
+        
+
+        border-b
+        
+
+        shadow-lg
+        shadow-black/5
+
+        px-4 sm:px-6
+        py-3
+
+        flex
+        items-center
+        justify-between
       "
     >
       {/* LEFT: APP NAME */}
-      <h1 className="text-lg sm:text-xl font-bold text-blue-700">
+      <h1 className="text-lg sm:text-xl font-bold text-blue-700 drop-shadow-sm">
         CA Front Page Generator
       </h1>
 
@@ -32,10 +39,16 @@ const Header = () => {
         className="
           p-2
           rounded-full
-          text-gray-600
-          hover:bg-gray-200
+
+          text-gray-700
+
+          hover:bg-white/40
           hover:text-black
+
+          backdrop-blur-sm
+
           transition
+          duration-200
         "
         aria-label="GitHub Profile"
       >

@@ -68,7 +68,7 @@ const App = () => {
 
   return (
     /* ROOT (Dynamic Height for Mobile) */
-    <div className="bg-gray-100 min-h-[100dvh] flex flex-col overflow-x-hidden">
+    <div className="bg-[#121212] min-h-screen flex flex-col overflow-x-hidden">
 
       {/* ================= FIXED HEADER ================= */}
       <div className="fixed top-0 left-0 w-full z-50">
@@ -100,9 +100,8 @@ const App = () => {
           className="
             w-full
             lg:w-120
-            bg-white
+            bg-[#444444]
             border
-            h-fit
             rounded-2xl
             px-4
             flex
@@ -115,7 +114,7 @@ const App = () => {
 
           {/* FORM */}
           <div className="flex justify-center p-4">
-            <div className="w-full max-w-md rounded-xl bg-white border p-4">
+            <div className="w-full max-w-md rounded-xl bg-[#b0b0b0] border p-4">
 
               <Form
                 formData={formData}
@@ -126,7 +125,7 @@ const App = () => {
           </div>
 
           {/* BUTTON BAR */}
-          <div className="p-3 bg-white flex flex-wrap gap-2 justify-center">
+          <div className="p-3 bg-[#b0b0b0] flex flex-wrap gap-2 justify-center rounded-xl mb-4">
 
             {formData.assessment === "CA1" && (
               <button
@@ -177,6 +176,7 @@ const App = () => {
             p-4
             mt-4 lg:mt-0
             overflow-hidden
+            
           "
         >
 
@@ -191,7 +191,7 @@ const App = () => {
             {/* PAGE FRAME */}
             <div
               className="
-                bg-white
+                bg-[#b0b0b0]
                 shadow-2xl
                 rounded-sm
                 overflow-hidden

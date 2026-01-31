@@ -7,7 +7,7 @@ const PresentationPreview = ({ formData }) => {
       {/* SLIDE */}
       <div
         id="presentation-slide"
-        className="w-full h-full bg-white p-10 flex flex-col justify-between text-center"
+        className="w-full h-full bg-[#f0f0f0] p-10 flex flex-col justify-between text-center"
       >
 
         {/* TOP */}
