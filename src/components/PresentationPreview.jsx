@@ -2,19 +2,30 @@ import React from "react";
 
 const PresentationPreview = ({ formData }) => {
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full bg-[#f4f6fa] flex flex-col">
 
-      {/* SLIDE */}
+      {/* ================= SLIDE ================= */}
       <div
         id="presentation-slide"
-        className="w-full h-full bg-[#f0f0f0] p-10 flex flex-col justify-between text-center"
+        className="
+          flex-1
+          p-12
+          flex
+          flex-col
+          justify-between
+          text-center
+          font-sans
+        "
       >
+        {/* ================= TOP ================= */}
+        <div className="flex flex-col items-center space-y-1">
+          <img
+            src="/future.png"
+            alt="FIEM Logo"
+            className="h-20 object-contain mb-2"
+          />
 
-        {/* TOP */}
-        <div className="flex flex-col items-center">
-          <img src="/future.png" alt="FIEM Logo" className="h-16 mb-2" />
-
-          <h2 className="text-lg font-bold text-[#000099]">
+          <h2 className="text-xl font-bold text-[#000099]">
             FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
           </h2>
 
@@ -23,58 +34,66 @@ const PresentationPreview = ({ formData }) => {
           <p className="text-sm font-bold">MAKAUT, WB</p>
         </div>
 
-        {/* TITLE */}
-        <div>
-          <h1 className="text-lg uppercase">
+        {/* ================= CENTER ================= */}
+        <div className="space-y-3">
+
+          <h1 className="text-2xl font-semibold uppercase leading-snug">
             {formData.title || "TITLE OF THE PRESENTATION"}
           </h1>
 
-          <p className="mt-3 text-lg font-semibold text-[#0000FF] font-times">
-            CONTINUOUS ASSESSMENT #{formData.assessment === "CA1" ? "1" : "2"}
+          <p className="text-lg font-bold text-[#0000FF]">
+            CONTINUOUS ASSESSMENT #
+            {formData.assessment === "CA1" ? "1" : "2"}
           </p>
 
-          <p className="mt-2 uppercase font-semibold font-times">
+          <p className="uppercase font-semibold">
             {formData.subject_name || "SUBJECT NAME"}
           </p>
 
-          <p className="uppercase font-semibold font-times">
+          <p className="uppercase font-semibold">
             {formData.subject_code || "SUBJECT CODE"}
           </p>
 
-          <p className="mt-2 text-lg text-[#0335CD] font-bold">
+          <p className="text-lg font-bold text-[#0335CD]">
             Academic Session: {formData.session || "2025-26"}
           </p>
+
         </div>
 
-        {/* STUDENT */}
-        <div>
-          <p className="text-sm text-[#A50021] font-times font-bold">PRESENTED BY</p>
+        {/* ================= STUDENT ================= */}
+        <div className="space-y-1">
 
-          <p className="text-lg uppercase font-times">
+          <p className="text-sm text-[#A50021] font-bold">
+            PRESENTED BY
+          </p>
+
+          <p className="text-xl uppercase font-semibold">
             {formData.name || "STUDENT NAME"}
           </p>
 
-          <p>{formData.university_roll || "ROLL NO"}</p>
+          <p>
+            {formData.university_roll || "ROLL NO"}
+          </p>
 
-           <p className="text-[#0033CC] font-semibold">
-              <span className="text-gray-500">{formData.year}</span> Year :
-              <span className="text-gray-500"> {formData.semester}</span> Semester
-            </p>
+          <p className="text-[#0033CC] font-semibold">
+            <span className="text-gray-500">{formData.year}</span> Year :
+            <span className="text-gray-500"> {formData.semester}</span> Semester
+          </p>
 
-          <p className="uppercase text-sm font-times">
+          <p className="uppercase text-sm font-semibold">
             {formData.department || "DEPARTMENT"}
           </p>
+
         </div>
 
-        {/* TEACHER */}
+        {/* ================= TEACHER ================= */}
         <div>
-          <p className="font-semibold uppercase font-times">
+          <p className="font-semibold uppercase">
             Name of the Teacher: {formData.teacher_name || ""}
           </p>
         </div>
 
       </div>
-
     </div>
   );
 };
