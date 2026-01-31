@@ -150,42 +150,69 @@ const Home = () => {
 
 
                     {/* ================= RIGHT PREVIEW ================= */}
-                    <div
-                        ref={previewRef}
-                        className="
-              flex-1
-              flex
-              justify-center
-              items-start
-              overflow-auto
-              bg-[#0F0F0F]
-              mt-4 lg:mt-0
-            "
-                    >
-                        {/* HEIGHT HOLDER */}
-                        <div
-                            style={{
-                                height: page.h * scale,
-                            }}
-                            className="flex justify-center w-full"
-                        >
-                            {/* SCALE APPLIED HERE ONLY */}
-                            <div
-                                style={{
-                                    width: page.w,
-                                    height: page.h,
-                                    transform: `scale(${scale})`,
-                                    transformOrigin: "top center",
-                                }}
-                            >
-                                {formData.assessment === "CA1" ? (
-                                    <PresentationPreview formData={formData} />
-                                ) : (
-                                    <ReportPreview formData={formData} />
-                                )}
-                            </div>
-                        </div>
-                    </div>
+<div
+  ref={previewRef}
+  className="
+    flex-1
+    flex
+    flex-col
+    justify-start
+    items-center
+    overflow-auto
+    bg-[#0F0F0F]
+    mt-4 lg:mt-0
+  "
+>
+  {/* HEIGHT HOLDER */}
+  <div
+    style={{
+      height: page.h * scale,
+    }}
+    className="flex justify-center w-full"
+  >
+    {/* SCALE APPLIED HERE ONLY */}
+    <div
+      style={{
+        width: page.w,
+        height: page.h,
+        transform: `scale(${scale})`,
+        transformOrigin: "top center",
+      }}
+    >
+      {formData.assessment === "CA1" ? (
+        <PresentationPreview formData={formData} />
+      ) : (
+        <ReportPreview formData={formData} />
+      )}
+    </div>
+  </div>
+
+  {/* ================= PREVIEW NOTE ================= */}
+
+<div
+  className="
+    mt-3
+    flex
+    items-center
+    justify-center
+    gap-2
+    text-xs
+    text-gray-400
+    px-4
+    leading-relaxed
+    text-center
+  "
+>
+  <span className="text-sm ">ℹ️</span>
+
+  <span>
+    This is only a preview. Downloaded documents will be generated in proper
+    page size with the correct front-page layout.
+  </span>
+</div>
+
+</div>
+
                 </div>
             </div>
         </div>
