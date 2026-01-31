@@ -56,18 +56,17 @@ const Home = () => {
 
     let final;
 
-    // 👉 REPORT: Fit by HEIGHT only (no scroll)
-    if (formData.assessment === "CA2") {
-      final = scaleH;
-    }
-    // 👉 PPT: Normal fit
-    else {
-      final = Math.min(scaleW, scaleH);
-    }
+if (isMobile) {
+  // 📱 Mobile: Fit width only
+  final = scaleW;
+} else {
+  // 💻 Desktop: Fit both
+  final = Math.min(scaleW, scaleH);
+}
 
-    if (isMobile) final *= 0.95;
+// Limit zoom
+if (final > 1) final = 1;
 
-    if (final > 1) final = 1;
 
     setScale(final);
   };
@@ -91,13 +90,15 @@ const Home = () => {
     <div style={{ height: HEADER_HEIGHT }} /> */}
 
     {/* MAIN AREA */}
-   <div className="min-h-[calc(100vh-64px)] px-3 lg:px-8 py-4">
+   <div className="min-h-[calc(100vh-64px)] px-0 lg:px-8
+py-4">
 
 
       <div
         className="
           h-full
-          max-w-450
+         w-full max-w-full
+
           mx-auto
           flex
           flex-col
@@ -119,7 +120,8 @@ const Home = () => {
           "
         >
           {/* FORM */}
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-hidden
+  p-4">
             <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
               <Form
                 formData={formData}
@@ -171,26 +173,30 @@ const Home = () => {
     flex-1
     bg-[#0F0F0F]
     flex
-    justify-center
+    justify-center lg:justify-center
+
     items-start
-    overflow-y-auto
+     overflow-x-hidden overflow-y-auto
+
+
     mt-4
     lg:mt-0
     h-fit
   "
 >
   {/* SCALE WRAPPER */}
-  <div
-  className="flex justify-center items-start w-full py-8"
+ <div
+  className="flex justify-center items-start w-full py-4  "
+  style={{
+    transform: `scale(${scale})`,
+    transformOrigin: "top center",
+    height: page.h * scale, // 👈 IMPORTANT
+  }}
+>
 
-    style={{
-      transform: `scale(${scale})`,
-      transformOrigin: "top center",
-    }}
-  >
     {/* PAGE */}
     <div
-      className=" rounded-xl"
+      className=" rounded-xl "
       style={{
         width: page.w,
         // height: page.h,
