@@ -215,13 +215,13 @@ const Form = ({ formData, setFormData }) => {
           />
         </div>
 
-
+<div className="flex gap-3">
         {/* YEAR */}
         <div>
           <label className="text-sm font-medium">Year</label>
 
           <select
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded mt-1 bg-[#444444]"
             value={formData.year}
             onChange={(e) =>
               setFormData({ ...formData, year: e.target.value })
@@ -241,7 +241,7 @@ const Form = ({ formData, setFormData }) => {
           <label className="text-sm font-medium">Semester</label>
 
           <select
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded mt-1 bg-[#444444]"
             value={formData.semester}
             onChange={(e) =>
               setFormData({ ...formData, semester: e.target.value })
@@ -257,7 +257,7 @@ const Form = ({ formData, setFormData }) => {
           </select>
         </div>
 
-
+</div>
         {/* DEPARTMENT */}
         <div>
           <label className="text-sm font-medium">Department</label>

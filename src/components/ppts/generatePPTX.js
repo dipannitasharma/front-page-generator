@@ -158,7 +158,7 @@ slide.addText(
 
   /* ================= SAVE ================= */
 
-  pptx.writeFile("CA1_Presentation.pptx");
+  pptx.writeFile(`${data.subject_name || "Presentation"}.pptx`);
 };
 
 export default generatePPTX;
