@@ -84,13 +84,15 @@ const Home = () => {
     formData.assessment === "CA1" ? PPT : A4;
 
   return (
-  <div className="h-screen bg-[#0f0f0f] overflow-hidden">
+ <div className="min-h-screen bg-[#0f0f0f] overflow-x-hidden">
+
     
     {/* HEADER SPACE
     <div style={{ height: HEADER_HEIGHT }} /> */}
 
     {/* MAIN AREA */}
-    <div className="h-[calc(100vh-64px)] px-3 lg:px-8 py-4">
+   <div className="min-h-[calc(100vh-64px)] px-3 lg:px-8 py-4">
+
 
       <div
         className="
@@ -161,46 +163,49 @@ const Home = () => {
           </div>
         </div>
 
-        {/* ================= RIGHT ================= */}
+{/* ================= RIGHT ================= */}
 <div
   ref={previewRef}
   className="
+    w-full
     flex-1
     bg-[#0F0F0F]
-    rounded-2xl
-    h-full
     flex
     justify-center
-    items-center
-    overflow-hidden
+    items-start
+    overflow-y-auto
+    mt-4
+    lg:mt-0
+    h-fit
   "
 >
+  {/* SCALE WRAPPER */}
+  <div
+  className="flex justify-center items-start w-full py-8"
 
+    style={{
+      transform: `scale(${scale})`,
+      transformOrigin: "top center",
+    }}
+  >
+    {/* PAGE */}
+    <div
+      className=" rounded-xl"
+      style={{
+        width: page.w,
+        // height: page.h,
+        maxWidth: "100%",
+      }}
+    >
+      {formData.assessment === "CA1" ? (
+        <PresentationPreview formData={formData} />
+      ) : (
+        <ReportPreview formData={formData} />
+      )}
+    </div>
+  </div>
+</div>
 
-          {/* SCALE WRAPPER */}
-          <div
-          className="flex justify-center items-center"
-            style={{
-              transform: `scale(${scale})`,
-              transformOrigin: "center center",
-            }}
-          >
-            {/* PAGE */}
-            <div
-              className="bg-white mb-10 overflow-hidden"
-              style={{
-                width: page.w,
-                height: page.h,
-              }}
-            >
-              {formData.assessment === "CA1" ? (
-                <PresentationPreview formData={formData} />
-              ) : (
-                <ReportPreview formData={formData} />
-              )}
-            </div>
-          </div>
-        </div>
 
       </div>
     </div>

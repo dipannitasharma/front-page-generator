@@ -1,22 +1,31 @@
 import React from "react";
 
 const PresentationPreview = ({ formData }) => {
-  return (
-    <div className="w-full h-full bg-[#f4f6fa] flex flex-col">
+  
+ return (
+  <div className="w-full flex justify-center overflow-visible">
 
-      {/* ================= SLIDE ================= */}
+    {/* SCALE CONTAINER */}
+    <div
+      className="origin-top, scale-100"
+      
+    >
+      {/* SLIDE */}
       <div
         id="presentation-slide"
         className="
-          flex-1
+          w-[960px]
+          h-[600px]
           p-12
           flex
           flex-col
           justify-between
           text-center
           font-sans
+          bg-[#f4f6fa]
         "
       >
+
         {/* ================= TOP ================= */}
         <div className="flex flex-col items-center space-y-1">
           <img
@@ -95,6 +104,7 @@ const PresentationPreview = ({ formData }) => {
 
       </div>
     </div>
+  </div>
   );
 };
 
