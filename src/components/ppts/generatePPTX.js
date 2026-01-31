@@ -3,6 +3,7 @@ import PptxGenJS from "pptxgenjs";
 const generatePPTX = (data) => {
   const pptx = new PptxGenJS();
 
+  // A4 Landscape
   pptx.defineLayout({
     name: "A4LAND",
     width: 13.33,
@@ -13,48 +14,64 @@ const generatePPTX = (data) => {
 
   const slide = pptx.addSlide();
 
+  // Background
   slide.background = { fill: "FFFFFF" };
 
-  slide.addImage({
-    path: "./assets/future.png",
-    x: 5.3,
-    y: 0.3,
-    w: 2,
-  });
+  /* ================= LOGO ================= */
 
-  slide.addText("FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT", {
-    x: 1,
-    y: 1.3,
-    w: 11,
-    fontSize: 20,
+  slide.addImage({
+  path: "/future.png",
+  x: 5.6,
+  y: 0.25,
+  w: 1.8,
+});
+
+// Push title down
+slide.addText(
+  "FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT",
+  {
+    x: 0.5,
+    y: 1.5,   // ← was 1.2
+    w: 12.3,
+    fontSize: 22,
     bold: true,
     align: "center",
     color: "0000CC",
-  });
+  }
+);
 
-  slide.addText("[CC – 148]\nUNDER\nMAKAUT, WB", {
-    x: 1,
-    y: 1.9,
-    w: 11,
-    fontSize: 14,
-    bold: true,
-    align: "center",
-  });
-
-  slide.addText(data.title || "TITLE", {
-    x: 1,
-    y: 2.8,
-    w: 11,
-    fontSize: 18,
-    align: "center",
-  });
 
   slide.addText(
-    `CONTINUOUS ASSESSMENT #1`,
+    "[CC – 148]\nUNDER\nMAKAUT, WB",
     {
-      x: 1,
-      y: 3.4,
-      w: 11,
+      x: 0.5,
+      y: 2.0,
+      w: 12.3,
+      fontSize: 14,
+      bold: true,
+      align: "center",
+    }
+  );
+
+  /* ================= MAIN ================= */
+
+  slide.addText(
+    data.title || "TITLE OF THE PRESENTATION",
+    {
+      x: 0.5,
+      y: 2.7,
+      w: 12.3,
+      fontSize: 20,
+      align: "center",
+    }
+  );
+
+  slide.addText(
+    "CONTINUOUS ASSESSMENT #1",
+    {
+      x: 0.5,
+      y: 3.3,
+      w: 12.3,
       fontSize: 18,
       bold: true,
       align: "center",
@@ -65,41 +82,49 @@ const generatePPTX = (data) => {
   slide.addText(
     `${data.subject_name}\n${data.subject_code}`,
     {
-      x: 1,
-      y: 4.1,
-      w: 11,
-      fontSize: 14,
+      x: 0.5,
+      y: 4.0,
+      w: 12.3,
+      fontSize: 15,
       bold: true,
       align: "center",
     }
   );
 
-  slide.addText(`Academic Session: ${data.session}`, {
-    x: 1,
-    y: 4.8,
-    w: 11,
-    fontSize: 16,
-    bold: true,
-    align: "center",
-    color: "0335CD",
-  });
+  slide.addText(
+    `Academic Session: ${data.session}`,
+    {
+      x: 0.5,
+      y: 4.6,
+      w: 12.3,
+      fontSize: 16,
+      bold: true,
+      align: "center",
+      color: "0335CD",
+    }
+  );
 
-  slide.addText("PRESENTED BY", {
-    x: 1,
-    y: 5.5,
-    w: 11,
-    fontSize: 14,
-    bold: true,
-    align: "center",
-    color: "A50021",
-  });
+  /* ================= STUDENT ================= */
+
+  slide.addText(
+    "PRESENTED BY",
+    {
+      x: 0.5,
+      y: 5.2,
+      w: 12.3,
+      fontSize: 14,
+      bold: true,
+      align: "center",
+      color: "A50021",
+    }
+  );
 
   slide.addText(
     `${data.name}\n${data.university_roll}`,
     {
-      x: 1,
-      y: 6.1,
-      w: 11,
+      x: 0.5,
+      y: 5.7,
+      w: 12.3,
       fontSize: 14,
       align: "center",
     }
@@ -108,23 +133,30 @@ const generatePPTX = (data) => {
   slide.addText(
     `${data.year} Year : ${data.semester} Semester\n${data.department}`,
     {
-      x: 1,
-      y: 6.7,
-      w: 11,
+      x: 0.5,
+      y: 6.2,
+      w: 12.3,
       fontSize: 14,
       align: "center",
       color: "0033CC",
     }
   );
 
-  slide.addText(`NAME OF THE TEACHER: ${data.teacher_name}`, {
-    x: 1,
-    y: 7.3,
-    w: 11,
-    fontSize: 14,
-    bold: true,
-    align: "center",
-  });
+  /* ================= TEACHER ================= */
+
+  slide.addText(
+    `NAME OF THE TEACHER: ${data.teacher_name}`,
+    {
+      x: 0.5,
+      y: 6.7,
+      w: 12.3,
+      fontSize: 14,
+      bold: true,
+      align: "center",
+    }
+  );
+
+  /* ================= SAVE ================= */
 
   pptx.writeFile("CA1_Presentation.pptx");
 };

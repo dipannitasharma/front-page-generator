@@ -6,12 +6,10 @@ const ReportPreview = ({ formData }) => {
 
       {/* A4 INNER PAGE */}
       <div
-        id="report-a4"
-        className="w-full h-full bg-white text-center px-12 py-10"
-        style={{
-          boxSizing: "border-box",
-        }}
-      >
+  id="report-a4"
+  className="w-full h-full bg-white px-12 py-10 text-center flex flex-col justify-center"
+>
+
 
         {/* HEADER */}
         <div className="flex flex-col items-center mt-6">
