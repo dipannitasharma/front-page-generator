@@ -100,21 +100,21 @@ const App = () => {
           className="
             w-full
             lg:w-120
-            bg-[#444444]
+            bg-[#323232]
             border
             rounded-2xl
-            px-4
+            px-1
             flex
             flex-col
-
+            mt-5 lg:mt-2
             lg:sticky
             lg:top-20
           "
         >
 
           {/* FORM */}
-          <div className="flex justify-center p-4">
-            <div className="w-full max-w-md rounded-xl bg-[#b0b0b0] border p-4">
+          <div className="flex justify-center p-2 mt-5 lg:mt-2">
+            <div className="w-full max-w-md rounded-xl bg-[#444444] text-gray-200 border border-black p-4">
 
               <Form
                 formData={formData}
@@ -125,7 +125,7 @@ const App = () => {
           </div>
 
           {/* BUTTON BAR */}
-          <div className="p-3 bg-[#b0b0b0] flex flex-wrap gap-2 justify-center rounded-xl mb-4">
+          <div className="p-3 bg-[#444444] border border-black flex flex-wrap gap-2 justify-center rounded-xl mb-4">
 
             {formData.assessment === "CA1" && (
               <button

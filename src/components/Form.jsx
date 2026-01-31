@@ -66,7 +66,7 @@ const Form = ({ formData, setFormData }) => {
 
       {/* ASSESSMENT */}
       <div className="mb-5">
-        <p className="font-semibold mb-2">Select Assessment</p>
+        <p className="flex justify-center items-center font-semibold mb-2">Select Assessment</p>
 
         <label className="mr-4">
           <input

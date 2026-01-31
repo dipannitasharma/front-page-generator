@@ -27,9 +27,11 @@ const Header = () => {
       "
     >
       {/* LEFT: APP NAME */}
-      <h1 className="text-lg sm:text-xl font-bold text-blue-700 drop-shadow-sm">
+      <div className="flex flex-col justify-center items-end"><h1 className="text-lg sm:text-xl font-bold text-blue-300 drop-shadow-sm">
         CA Front Page Generator
       </h1>
+      <p className="text-white text-xs items-end">By Dipannita Sharma</p>
+      </div>
 
       {/* RIGHT: GITHUB ICON */}
       <a
@@ -39,8 +41,7 @@ const Header = () => {
         className="
           p-2
           rounded-full
-
-          text-gray-700
+          text-white
 
           hover:bg-white/40
           hover:text-black
@@ -55,8 +56,8 @@ const Header = () => {
         {/* GitHub SVG */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
+          width="28"
+          height="28"
           viewBox="0 0 24 24"
           fill="currentColor"
         >
