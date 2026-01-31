@@ -68,52 +68,86 @@ const Home = () => {
 
     return (
         <div className="min-h-screen bg-[#0f0f0f] overflow-x-hidden">
-            <div className="min-h-[calc(100vh-64px)] px-0 lg:px-8 py-4">
+            <div className="min-h-[calc(100vh-64px)] px-2 lg:px-8 py-4">
                 <div className="h-full w-full flex flex-col lg:flex-row gap-6 mx-auto">
                     {/* ================= LEFT PANEL ================= */}
-                    <div className="w-full lg:w-[420px] bg-[#2f2f2f] rounded-2xl flex flex-col">
-                        <div className="p-4">
-                            <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
-                                <Form
-                                    formData={formData}
-                                    setFormData={setFormData}
-                                />
-                            </div>
-                        </div>
+                    <div
+  className="
+    w-full
+    lg:w-[420px]
+    bg-[#2f2f2f]
+    rounded-2xl
+    flex
+    flex-col
+    lg:h-[calc(100vh-88px)]
+    overflow-hidden
+  "
+>
+  {/* ================= FORM AREA ================= */}
+  <div className="flex-1 p-4 overflow-y-auto">
+    <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
+      <Form
+        formData={formData}
+        setFormData={setFormData}
+      />
+    </div>
+  </div>
+{/* ================= BUTTON AREA ================= */}
+<div className="p-3 m-4 flex gap-3 justify-center bg-[#3d3d3d] rounded-xl">
 
-                        <div className="p-6 m-6 flex gap-3 justify-center bg-[#3d3d3d] rounded-2xl">
-                            {formData.assessment === "CA1" && (
-                                <button
-                                    onClick={() => generatePPTX(formData)}
-                                    className="px-4 py-2 bg-green-600 text-white rounded-lg"
-                                >
-                                    Download PPTX
-                                </button>
-                            )}
+  {formData.assessment === "CA1" && (
+    <button
+      onClick={() => generatePPTX(formData)}
+      className="
+        px-4
+        py-2
+        text-sm
+        bg-green-600
+        hover:bg-green-700
+        text-white
+        rounded-lg
+        transition
+      "
+    >
+      Download PPTX
+    </button>
+  )}
 
-                            <PDFDownloadLink
-                                document={
-                                    formData.assessment === "CA1" ? (
-                                        <PresentationPDF data={formData} />
-                                    ) : (
-                                        <ReportPDF data={formData} />
-                                    )
-                                }
-                                fileName="file.pdf"
-                            >
-                                {({ loading }) => (
-                                    <button
-                                        disabled={loading}
-                                        className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-60"
-                                    >
-                                        {loading
-                                            ? "Preparing..."
-                                            : "Download PDF"}
-                                    </button>
-                                )}
-                            </PDFDownloadLink>
-                        </div>
-                    </div>
+  <PDFDownloadLink
+    document={
+      formData.assessment === "CA1" ? (
+        <PresentationPDF data={formData} />
+      ) : (
+        <ReportPDF data={formData} />
+      )
+    }
+    fileName="file.pdf"
+  >
+    {({ loading }) => (
+      <button
+        disabled={loading}
+        className="
+          px-4
+          py-2
+          text-sm
+          bg-blue-600
+          hover:bg-blue-700
+          text-white
+          rounded-lg
+          transition
+          disabled:opacity-60
+        "
+      >
+        {loading ? "Preparing..." : "Download PDF"}
+      </button>
+    )}
+  </PDFDownloadLink>
+
+</div>
+
+
+</div>
+
 
                     {/* ================= RIGHT PREVIEW ================= */}
                     <div
