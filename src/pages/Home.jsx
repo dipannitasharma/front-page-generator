@@ -208,7 +208,9 @@ const Home = () => {
   <span>
     This is only a preview. Downloaded documents will be generated in proper
     page size with the correct front-page layout.
+    
   </span>
+  
 </div>
 
 </div>
