@@ -113,40 +113,54 @@ const Form = ({ formData, setFormData }) => {
         </div>
 
 
-        {/* SUBJECT (SEARCHABLE) */}
-        <div>
-          <label className="text-sm font-medium">Subject</label>
+       {/* SUBJECT (MOBILE SAFE DROPDOWN) */}
+<div className="relative">
+  <label className="text-sm font-medium">Subject</label>
 
-          <input
-  name="subject"
-  list="subject-list"
-  className="w-full p-2 border rounded mt-1"
-  placeholder="Type or select subject"
-  value={formData.subject_name}
-  onChange={(e) => {
-  const value = e.target.value;
+  <input
+    type="text"
+    className="w-full p-2 border rounded mt-1"
+    placeholder="Type or select subject"
+    value={formData.subject_name}
+    onChange={(e) => {
+      const value = e.target.value;
 
-  // Find exact match only
-  const found = SUBJECTS.find(
-    (s) => s.name.toLowerCase() === value.toLowerCase()
-  );
+      setFormData({
+        ...formData,
+        subject_name: value,
+        subject_code: "",
+      });
+    }}
+  />
 
-  setFormData({
-    ...formData,
-    subject_name: value,              // always allow typing
-    subject_code: found ? found.code : "", // autofill only if exact
-  });
-}}
+  {/* Dropdown */}
+  {formData.subject_name && (
+    <div className="absolute z-50 w-full bg-[#2f2f2f] border border-gray-600 rounded mt-1 max-h-40 overflow-y-auto">
 
-/>
-
-
-          <datalist id="subject-list">
-            {SUBJECTS.map((sub) => (
-              <option key={sub.code} value={sub.name} />
-            ))}
-          </datalist>
-        </div>
+      {SUBJECTS
+        .filter((s) =>
+          s.name.toLowerCase().includes(
+            formData.subject_name.toLowerCase()
+          )
+        )
+        .map((sub) => (
+          <div
+            key={sub.code}
+            className="px-3 py-2 cursor-pointer hover:bg-gray-700 text-sm"
+            onClick={() =>
+              setFormData({
+                ...formData,
+                subject_name: sub.name,
+                subject_code: sub.code,
+              })
+            }
+          >
+            {sub.name}
+          </div>
+        ))}
+    </div>
+  )}
+</div>
 
 
         {/* SUBJECT CODE */}
