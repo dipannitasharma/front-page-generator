@@ -32,9 +32,9 @@ const Header = () => {
           CA Front Page Generator
         </h1>
 
-        <p className="text-white text-xs">
+        {/* <p className="text-white text-xs">
           By Dipannita Sharma
-        </p>
+        </p> */}
       </div>
 
       {/* RIGHT */}
