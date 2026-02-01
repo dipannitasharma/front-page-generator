@@ -72,27 +72,27 @@ const Home = () => {
                 <div className="h-full w-full flex flex-col lg:flex-row gap-6 mx-auto">
                     {/* ================= LEFT PANEL ================= */}
               <div
-  className="
-    w-full
-    lg:w-[380px]
-    bg-[#2f2f2f]
-    rounded-2xl
-    flex
-    flex-col
-    lg:h-[calc(100vh-110px)]
-    overflow-hidden
-  "
->
+                  className="
+                    w-full
+                    lg:w-[380px]
+                    bg-[#2f2f2f]
+                    rounded-2xl
+                    flex
+                    flex-col
+                    lg:h-[calc(100vh-110px)]
+                    overflow-hidden
+                  "
+                >
 
   {/* ================= FORM AREA ================= */}
-  <div className="flex-1 p-4 overflow-y-auto">
-    <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
-      <Form
-        formData={formData}
-        setFormData={setFormData}
-      />
-    </div>
-  </div>
+              <div className="flex-1 p-4 overflow-y-auto">
+                <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
+                  <Form
+                    formData={formData}
+                    setFormData={setFormData}
+                  />
+                </div>
+              </div>
 {/* ================= BUTTON AREA ================= */}
 <div className="p-3 m-4 flex gap-3 justify-center bg-[#3d3d3d] rounded-xl">
 

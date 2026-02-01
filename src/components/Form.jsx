@@ -80,22 +80,63 @@ const SUBJECTS = [
   { name: "Nano Electronics", code: "PE-EC505A" },
   { name: "Power Electronics", code: "PE-EC505C" },
   { name: "Soft Skill and Interpersonal Communication", code: "OE-EC506A" },
+  { name: "Control System and Instrumentation", code: "EC601" },
+{ name: "Computer Network", code: "EC602" },
+{ name: "Economics for Engineers", code: "HS-HU601" },
+{ name: "Control and Instrumentation Laboratory", code: "EC691" },
+{ name: "Computer Network Lab", code: "EC692" },
+{ name: "Mini Project / Electronic Design Workshop", code: "EC681" },
+{ name: "Universal Human Values", code: "MC681" },
+{ name: "Principles of Management", code: "HS-HU701" },
+{ name: "Introduction to Data Science", code: "PCC-DS301" },
+{ name: "Microwave Theory and Technique", code: "PE-EC701A" },
+{ name: "Satellite Communication", code: "PE-EC701B" },
+{ name: "Mobile Communication and Networks", code: "PE-EC701C" },
+{ name: "Database Management Systems", code: "PCC-DS401" },
+{ name: "Adaptive Signal Processing", code: "PE-EC702A" },
+{ name: "Digital Image and Video Processing", code: "PE-EC702B" },
+{ name: "Neural Network and Fuzzy Logic Control", code: "PE-EC702C" },
+{ name: "Data Mining", code: "PCC-DS402" },
+{ name: "Embedded System", code: "PE-EC703A" },
+{ name: "Wireless Sensor Networks", code: "PE-EC703B" },
+{ name: "Wavelet Transforms", code: "PE-EC703C" },
+{ name: "Antennas and Propagation", code: "PE-EC801A" },
+{ name: "Fiber Optic Communication", code: "PE-EC801B" },
+{ name: "Error Correcting Codes", code: "PE-EC801C" },
+{ name: "Statistics for Data Science", code: "PCC-DS501" },
+{ name: "Mixed Signal Design", code: "PE-EC802A" },
+{ name: "Industrial Automation and Control", code: "PE-EC802B" },
+{ name: "VLSI Design Automation", code: "PE-EC802C" },
+{ name: "Theory of Computation", code: "PEC-DS501A" },
+{ name: "Internet of Things (IoT)", code: "OE-EC803A" },
+{ name: "Big Data Analysis", code: "OE-EC803B" },
+{ name: "Cyber Security", code: "OE-EC803C" },
+{ name: "Artificial Intelligence", code: "PCC-DS601" },
+{ name: "Data Communication and Computer Networks", code: "PCC-DS602" },
+{ name: "Big Data Technology", code: "PCC-DS603" },
+{ name: "Advanced Algorithms", code: "PEC-DS601A" },
+{ name: "Distributed Systems", code: "PEC-DS601B" },
+{ name: "Image Processing", code: "PEC-IT601D" },
+{ name: "Machine Learning", code: "PEC-DS601E" },
+{ name: "Quantum Computing", code: "PEC-DS701A" },
+{ name: "Cloud Computing", code: "PEC-DS701B" },
+{ name: "Digital Signal Processing", code: "PEC-DS701C" },
+{ name: "Multi-agent Intelligent Systems", code: "PEC-DS701D" },
+{ name: "Time Series Analysis and Forecasting", code: "PEC-DS701E" },
+{ name: "Data Visualization", code: "PEC-DS701F" },
+{ name: "Neural Networks and Deep Learning", code: "PEC-DS702A" },
+{ name: "Signal and Networks", code: "PEC-DS801A" },
+{ name: "Natural Language Processing", code: "PEC-DS801C" },
+{ name: "Computer Vision", code: "PEC-DS801D" },
+{ name: "Web and Internet Technology", code: "PEC-DS801E" },
+{ name: "Internet of Things", code: "PEC-DS801F" },
+{ name: "Big Data Analytics", code: "OEC-DS801A" }
 ]
-
-
-
-
-
-
-
 const Form = ({ formData, setFormData }) => {
   const [showDropdown, setShowDropdown] = React.useState(false);
 
   return (
     <div className="max-w-3xl mx-auto mb-6">
-
-
-
       {/* ASSESSMENT */}
       <div className="mb-5">
         <p className="flex justify-center items-center font-semibold mb-2">Select Assessment</p>
@@ -144,82 +185,129 @@ const Form = ({ formData, setFormData }) => {
           />
         </div>
 
-
-       {/* SUBJECT (MOBILE SAFE DROPDOWN) */}
 {/* SUBJECT (MOBILE SAFE DROPDOWN) */}
 <div className="relative">
   <label className="text-sm font-medium">Subject</label>
 
   <input
     type="text"
-    className="w-full p-2 border rounded mt-1"
-    placeholder="Type or select subject"
+    className="w-full p-2 border rounded-lg mt-1 bg-[#1f1f1f] focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+    placeholder="Search by subject name or code..."
     value={formData.subject_name}
     onFocus={() => setShowDropdown(true)}
     onChange={(e) => {
-      const value = e.target.value;
+      const value = e.target.value.toLowerCase();
 
-      // Check exact match
       const found = SUBJECTS.find(
-        (s) => s.name.toLowerCase() === value.toLowerCase()
+        (s) =>
+          s.name.toLowerCase() === value ||
+          s.code.toLowerCase() === value
       );
 
       setFormData({
         ...formData,
-        subject_name: value,
+        subject_name: e.target.value,
         subject_code: found ? found.code : "",
       });
 
       setShowDropdown(true);
     }}
     onBlur={() => {
-      // Delay so click works on mobile
       setTimeout(() => setShowDropdown(false), 150);
     }}
   />
 
   {/* Dropdown */}
   {showDropdown && (
-    <div className="absolute z-50 w-full bg-[#2f2f2f] border border-gray-600 rounded mt-1 max-h-40 overflow-y-auto shadow-lg">
+    <div className="absolute z-50 w-full mt-2 bg-[#1c1c1c]/95 backdrop-blur-md border border-gray-700 rounded-xl max-h-52 overflow-y-auto shadow-2xl animate-fadeIn">
+
+      {/* Header */}
+      <div className="px-3 py-2 text-xs text-gray-400 border-b border-gray-700">
+        Select your subject
+      </div>
 
       {SUBJECTS
-        .filter((s) =>
-          s.name.toLowerCase().includes(
-            formData.subject_name.toLowerCase()
-          )
+        .filter(
+          (s) =>
+            s.name
+              .toLowerCase()
+              .includes(formData.subject_name.toLowerCase()) ||
+            s.code
+              .toLowerCase()
+              .includes(formData.subject_name.toLowerCase())
         )
         .map((sub) => (
           <div
             key={sub.code}
-            className="px-3 py-2 cursor-pointer hover:bg-gray-700 text-sm"
+            className="
+              px-3 py-2
+              cursor-pointer
+              flex items-center justify-between
+              gap-3
+              rounded-md
+              mx-1 my-1
+              transition
+              hover:bg-blue-600/20
+              hover:scale-[1.01]
+              active:scale-95
+            "
             onMouseDown={() => {
-              // Use onMouseDown so blur doesn't cancel click
               setFormData({
                 ...formData,
-                subject_name: sub.name,
+                subject_name: `${sub.name} (${sub.code})`,
                 subject_code: sub.code,
               });
 
               setShowDropdown(false);
             }}
           >
-            {sub.name}
+            {/* Subject Name */}
+            <div className="flex flex-col">
+              <span className="text-sm font-sm text-white">
+                {sub.name}
+              </span>
+
+              <span className="text-[11px] text-gray-400">
+                Subject Code
+              </span>
+            </div>
+
+            {/* Code Badge */}
+            <span
+              className="
+                px-2 py-0.5
+                text-xs
+               
+                rounded-lg
+                bg-blue-500/20
+                text-blue-400
+                border border-blue-500/30
+              "
+            >
+              {sub.code}
+            </span>
           </div>
         ))}
 
       {/* No result */}
-      {SUBJECTS.filter((s) =>
-        s.name.toLowerCase().includes(
-          formData.subject_name.toLowerCase()
-        )
+      {SUBJECTS.filter(
+        (s) =>
+          s.name
+            .toLowerCase()
+            .includes(formData.subject_name.toLowerCase()) ||
+          s.code
+            .toLowerCase()
+            .includes(formData.subject_name.toLowerCase())
       ).length === 0 && (
-        <div className="px-3 py-2 text-xs text-gray-400">
-          No subject found
+        <div className="px-3 py-4 text-center text-sm text-gray-400">
+          ❌ No matching subject found
         </div>
       )}
     </div>
   )}
 </div>
+
+
 
 
 
@@ -285,7 +373,7 @@ const Form = ({ formData, setFormData }) => {
           />
         </div>
 
-<div className="flex gap-3">
+      <div className="flex gap-3">
         {/* YEAR */}
         <div>
           <label className="text-sm font-medium">Year</label>
@@ -329,7 +417,7 @@ const Form = ({ formData, setFormData }) => {
           </select>
         </div>
 
-</div>
+      </div>
         {/* DEPARTMENT */}
         <div>
           <label className="text-sm font-medium">Department</label>
