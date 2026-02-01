@@ -48,10 +48,6 @@ const Footer = () => {
     </a>
 
   </div>
-
-  <p className="text-xs mt-1 text-gray-500">
-    Aspiring Software Engineer 💻
-  </p>
 </div>
 
 
