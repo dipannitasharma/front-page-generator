@@ -71,18 +71,19 @@ const Home = () => {
             <div className="min-h-[calc(100vh-64px)] px-2 lg:px-8 py-4">
                 <div className="h-full w-full flex flex-col lg:flex-row gap-6 mx-auto">
                     {/* ================= LEFT PANEL ================= */}
-                    <div
+              <div
   className="
     w-full
-    lg:w-[420px]
+    lg:w-[380px]
     bg-[#2f2f2f]
     rounded-2xl
     flex
     flex-col
-    lg:h-[calc(100vh-88px)]
+    lg:h-[calc(100vh-110px)]
     overflow-hidden
   "
 >
+
   {/* ================= FORM AREA ================= */}
   <div className="flex-1 p-4 overflow-y-auto">
     <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
