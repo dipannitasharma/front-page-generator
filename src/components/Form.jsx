@@ -2,54 +2,84 @@ import React from "react";
 
 /* COMMON SUBJECTS */
 const SUBJECTS = [
-  // [ SEMESTER 1 ]
-  { name: "Mathematics-I", code: "BS-M101" },
-  { name: "Physics", code: "BS-P101" },
+  { name: "Mathematics –IA", code: "BS-M101" },
+  { name: "Mathematics –IB", code: "BS-M102" },
+  { name: "Physics-I (Gr-A)", code: "BS-Ph101" },
+  { name: "Physics-I (Gr-B)", code: "BS-Ph201" },
   { name: "Basic Electrical Engineering", code: "ES-EE101" },
   { name: "Programming for Problem Solving", code: "ES-CS101" },
-  { name: "Engineering Graphics", code: "ES-ME101" },
-  // [ SEMESTER 2 ]
-
-  { name: "Mathematics-II", code: "BS-M201" },
-  { name: "Chemistry", code: "BS-CH101" },
+  { name: "Mathematics-IIA", code: "BS-M201" },
+  { name: "Mathematics-IIB", code: "BS-M202" },
+  { name: "Chemistry-I (Gr-A)", code: "BS-CH101" },
+  { name: "Chemistry-I (Gr-B)", code: "BS-CH201" },
   { name: "Environment and Ecology", code: "MC-H101" },
   { name: "English", code: "HM-H201" },
   { name: "Basic Electronics Engineering", code: "ES-EC101" },
   { name: "Engineering Mechanics", code: "ES-ME201" },
-  // [ SEMESTER 3 ][
   { name: "Analog and Digital Electronics", code: "ESC301" },
   { name: "Data Structure & Algorithms", code: "PCC-CS301" },
   { name: "Computer Organisation", code: "PCC-CS302" },
   { name: "Mathematics-III (Differential Calculus)", code: "BSC301" },
   { name: "Economics for Engineers", code: "HSMC301" },
-  //[ SEMESTER 4]
-  
-  
   { name: "Discrete Mathematics", code: "PCC-CS401" },
   { name: "Computer Architecture", code: "PCC-CS402" },
   { name: "Formal Language and Automata Theory", code: "PCC-CS403" },
   { name: "Design and Analysis of Algorithms", code: "PCC-CS404" },
   { name: "Biology", code: "BSC401" },
   { name: "Environmental Sciences", code: "MC401" },
-
-
-//[ SEMESTER 5 ]
-
-
   { name: "Software Engineering", code: "ESC501" },
   { name: "Compiler Design", code: "PCC-CS501" },
   { name: "Operating Systems", code: "PCC-CS502" },
   { name: "Object Oriented Programming", code: "PCC-CS503" },
   { name: "Introduction to Industrial Management", code: "HSMC501" },
+  { name: "Artificial Intelligence", code: "PEC-IT501B" },
   { name: "Constitution of India / Indian Knowledge Tradition", code: "MC-CS501A/B" },
-
-//[semester 6]
-
   { name: "Database Management Systems", code: "PCC-CS601" },
+  { name:"Distributed Database Management System ",code:"PEC-IT601B "},
+  { name:"Image Processing ",code:"PEC-IT601 D"},
   { name: "Computer Networks", code: "PCC-CS602" },
-  { name: "Research Methodology", code: "PROJ-CS601" }
-
-
+  { name:"Data Warehousing and Data Mining",code:"PEC-IT602B "},
+  { name: "Research Methodology", code: "PROJ-CS601" },
+  { name: "Quantum Computing", code: "PEC-CS701A" },
+  { name: "Cloud Computing", code: "PEC-CS701B" },
+  { name: "Digital Signal Processing", code: "PEC-CS701C" },
+  { name: "Multi-agent Intelligent Systems", code: "PEC-CS701D" },
+  { name: "Machine Learning", code: "PEC-CS701E" },
+  { name: "Neural Networks and Deep Learning", code: "PEC-CS702A" },
+  { name: "Soft Computing", code: "PEC-CS702B" },
+  { name: "Adhoc – Sensor Network", code: "PEC-CS702C" },
+  { name: "Information Theory and Coding", code: "PEC-CS702D" },
+  { name: "Cyber Security", code: "PEC-CS702E" },
+  { name: "Operation Research", code: "OEC-CS701A" },
+  { name: "Signals and Networks", code: "PEC-CS801A" },
+  { name: "Cryptography and Network Security", code: "PEC-CS801B" },
+  { name: "Speech and Natural Language Processing", code: "PEC-CS801C" },
+  { name: "Web and Internet Technology", code: "PEC-CS801D" },
+  { name: "Internet of Things", code: "PEC-CS801E" },
+  { name: "Big Data Analytics", code: "OEC-CS801A" },
+  { name: "Cyber Law and Ethics", code: "OEC-CS801B" },
+  { name: "Mobile Computing", code: "OEC-CS801C" },
+  { name: "Robotics", code: "OEC-IT801" },
+  { name: "Soft Skill & Interpersonal Communication", code: "OEC-CS801E" },
+  { name: "Electronic Devices", code: "EC301" },
+  { name: "Digital System Design", code: "EC302" },
+  { name: "Signals and System", code: "EC303" },
+  { name: "Network Theory", code: "EC304" },
+  { name: "Probability and Statistics", code: "BS-M301" },
+  { name: "Environmental Science", code: "MC381" },
+  { name: "Analog Communication", code: "EC401" },
+  { name: "Analog Circuits", code: "EC402" },
+  { name: "Microprocessor & Microcontroller", code: "EC403" },
+  { name: "Numerical Methods", code: "BS-M401" },
+  { name: "Biology for Engineers", code: "BS-B401" },
+  { name: "Design and Analysis of Algorithm", code: "ES-CS401" },
+  { name: "Electromagnetic Waves", code: "EC501" },
+  { name: "Computer Architecture", code: "EC502" },
+  { name: "Digital Communication and Stochastic Process", code: "EC503" },
+  { name: "Digital Signal Processing", code: "EC504" },
+  { name: "Nano Electronics", code: "PE-EC505A" },
+  { name: "Power Electronics", code: "PE-EC505C" },
+  { name: "Soft Skill and Interpersonal Communication", code: "OE-EC506A" },
 ]
 
 
@@ -294,6 +324,8 @@ const Form = ({ formData, setFormData }) => {
             <option>4th</option>
             <option>5th</option>
             <option>6th</option>
+            <option>7th</option>
+            <option>8th</option>
           </select>
         </div>
 
