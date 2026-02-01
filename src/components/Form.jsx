@@ -11,7 +11,7 @@ const SUBJECTS = [
   // [ SEMESTER 2 ]
 
   { name: "Mathematics-II", code: "BS-M201" },
-  { name: "Chemistry", code: "BS-C101" },
+  { name: "Chemistry", code: "BS-CH101" },
   { name: "Environment and Ecology", code: "MC-H101" },
   { name: "English", code: "HM-H201" },
   { name: "Basic Electronics Engineering", code: "ES-EC101" },
@@ -59,6 +59,8 @@ const SUBJECTS = [
 
 
 const Form = ({ formData, setFormData }) => {
+  const [showDropdown, setShowDropdown] = React.useState(false);
+
   return (
     <div className="max-w-3xl mx-auto mb-6">
 
@@ -114,6 +116,7 @@ const Form = ({ formData, setFormData }) => {
 
 
        {/* SUBJECT (MOBILE SAFE DROPDOWN) */}
+{/* SUBJECT (MOBILE SAFE DROPDOWN) */}
 <div className="relative">
   <label className="text-sm font-medium">Subject</label>
 
@@ -122,20 +125,32 @@ const Form = ({ formData, setFormData }) => {
     className="w-full p-2 border rounded mt-1"
     placeholder="Type or select subject"
     value={formData.subject_name}
+    onFocus={() => setShowDropdown(true)}
     onChange={(e) => {
       const value = e.target.value;
+
+      // Check exact match
+      const found = SUBJECTS.find(
+        (s) => s.name.toLowerCase() === value.toLowerCase()
+      );
 
       setFormData({
         ...formData,
         subject_name: value,
-        subject_code: "",
+        subject_code: found ? found.code : "",
       });
+
+      setShowDropdown(true);
+    }}
+    onBlur={() => {
+      // Delay so click works on mobile
+      setTimeout(() => setShowDropdown(false), 150);
     }}
   />
 
   {/* Dropdown */}
-  {formData.subject_name && (
-    <div className="absolute z-50 w-full bg-[#2f2f2f] border border-gray-600 rounded mt-1 max-h-40 overflow-y-auto">
+  {showDropdown && (
+    <div className="absolute z-50 w-full bg-[#2f2f2f] border border-gray-600 rounded mt-1 max-h-40 overflow-y-auto shadow-lg">
 
       {SUBJECTS
         .filter((s) =>
@@ -147,20 +162,35 @@ const Form = ({ formData, setFormData }) => {
           <div
             key={sub.code}
             className="px-3 py-2 cursor-pointer hover:bg-gray-700 text-sm"
-            onClick={() =>
+            onMouseDown={() => {
+              // Use onMouseDown so blur doesn't cancel click
               setFormData({
                 ...formData,
                 subject_name: sub.name,
                 subject_code: sub.code,
-              })
-            }
+              });
+
+              setShowDropdown(false);
+            }}
           >
             {sub.name}
           </div>
         ))}
+
+      {/* No result */}
+      {SUBJECTS.filter((s) =>
+        s.name.toLowerCase().includes(
+          formData.subject_name.toLowerCase()
+        )
+      ).length === 0 && (
+        <div className="px-3 py-2 text-xs text-gray-400">
+          No subject found
+        </div>
+      )}
     </div>
   )}
 </div>
+
 
 
         {/* SUBJECT CODE */}
