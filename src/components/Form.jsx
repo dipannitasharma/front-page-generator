@@ -118,32 +118,28 @@ const Form = ({ formData, setFormData }) => {
           <label className="text-sm font-medium">Subject</label>
 
           <input
-            list="subject-list"
-            className="w-full p-2 border rounded mt-1"
-            placeholder="Type or select subject"
-            value={formData.subject_name}
-            onChange={(e) => {
-              const value = e.target.value;
+  name="subject"
+  list="subject-list"
+  className="w-full p-2 border rounded mt-1"
+  placeholder="Type or select subject"
+  value={formData.subject_name}
+  onChange={(e) => {
+  const value = e.target.value;
 
-              const found = SUBJECTS.find(
-                (s) => s.name.toLowerCase() === value.toLowerCase()
-              );
+  // Find exact match only
+  const found = SUBJECTS.find(
+    (s) => s.name.toLowerCase() === value.toLowerCase()
+  );
 
-              if (found) {
-                setFormData({
-                  ...formData,
-                  subject_name: found.name,
-                  subject_code: found.code,
-                });
-              } else {
-                setFormData({
-                  ...formData,
-                  subject_name: value,
-                  subject_code: "",
-                });
-              }
-            }}
-          />
+  setFormData({
+    ...formData,
+    subject_name: value,              // always allow typing
+    subject_code: found ? found.code : "", // autofill only if exact
+  });
+}}
+
+/>
+
 
           <datalist id="subject-list">
             {SUBJECTS.map((sub) => (
