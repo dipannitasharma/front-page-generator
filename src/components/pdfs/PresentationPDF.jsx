@@ -150,6 +150,7 @@ gray: {
     fontSize: 13,
     fontWeight: "bold",
     fontFamily: "TimesNewRoman",
+    textTransform: "uppercase",
   },
 });
 

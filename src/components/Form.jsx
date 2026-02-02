@@ -130,7 +130,8 @@ const SUBJECTS = [
 { name: "Computer Vision", code: "PEC-DS801D" },
 { name: "Web and Internet Technology", code: "PEC-DS801E" },
 { name: "Internet of Things", code: "PEC-DS801F" },
-{ name: "Big Data Analytics", code: "OEC-DS801A" }
+{ name: "Big Data Analytics", code: "OEC-DS801A" },
+{name:"HUMAN RESOURCE DEVELOPMENT & ORGANIZATIONAL BEHAVIOUR",code:"OEC-IT601B"}
 ]
 const Form = ({ formData, setFormData }) => {
   const [showDropdown, setShowDropdown] = React.useState(false);
@@ -170,7 +171,7 @@ const Form = ({ formData, setFormData }) => {
 
 
       {/* INPUTS */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
 
 
         {/* TITLE */}
@@ -219,12 +220,7 @@ const Form = ({ formData, setFormData }) => {
 
   {/* Dropdown */}
   {showDropdown && (
-    <div className="absolute z-50 w-full mt-2 bg-[#1c1c1c]/95 backdrop-blur-md border border-gray-700 rounded-xl max-h-52 overflow-y-auto shadow-2xl animate-fadeIn">
-
-      {/* Header */}
-      <div className="px-3 py-2 text-xs text-gray-400 border-b border-gray-700">
-        Select your subject
-      </div>
+    <div className="absolute z-50  w-full lg:w-50 mr-2 bg-[#1c1c1c]/95 backdrop-blur-md border border-gray-700 rounded-xl max-h-60 overflow-y-auto shadow-2xl animate-fadeIn">
 
       {SUBJECTS
         .filter(
@@ -306,11 +302,6 @@ const Form = ({ formData, setFormData }) => {
     </div>
   )}
 </div>
-
-
-
-
-
         {/* SUBJECT CODE */}
         <div>
           <label className="text-sm font-medium">Subject Code</label>
@@ -373,7 +364,7 @@ const Form = ({ formData, setFormData }) => {
           />
         </div>
 
-      <div className="flex gap-3">
+      <div className="grid grid-cols-2 lg:grid-cols-2 gap-3">
         {/* YEAR */}
         <div>
           <label className="text-sm font-medium">Year</label>

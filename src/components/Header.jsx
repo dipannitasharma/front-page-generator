@@ -48,7 +48,7 @@ const Header = () => {
             ${
               isActive("/")
                 ? "text-blue-400"
-                : "text-white/80 hover:text-white"
+                : "text-purple-400 hover:text-white"
             }
           `}
         >
@@ -63,7 +63,7 @@ const Header = () => {
             ${
               isActive("/merge")
                 ? "text-blue-400"
-                : "text-white/80 hover:text-white"
+                : "text-purple-400 hover:text-white"
             }
           `}
         >

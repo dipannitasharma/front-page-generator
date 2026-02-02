@@ -11,7 +11,7 @@ const Footer = () => {
         </p>
 
         {/* Center */}
-        <div className="text-center text-xs text-gray-500 leading-relaxed">
+        <div className="text-center text-xs text-gray-300 leading-relaxed">
           <p>Always download for best results</p>
         </div>
 

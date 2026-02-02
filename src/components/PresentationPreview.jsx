@@ -46,20 +46,20 @@ const PresentationPreview = ({ formData }) => {
         {/* ================= CENTER ================= */}
         <div className="space-y-3">
 
-          <h1 className="text-2xl font-semibold uppercase leading-snug">
+          <h1 className="text-xl mt-4 font-semibold uppercase leading-snug">
             {formData.title || "TITLE OF THE PRESENTATION"}
           </h1>
 
-          <p className="text-lg font-bold text-[#0000FF]">
+          <p className="text-lg font-times font-bold text-[#0000FF]">
             CONTINUOUS ASSESSMENT #
             {formData.assessment === "CA1" ? "1" : "2"}
           </p>
 
-          <p className="uppercase font-semibold">
+          <p className="uppercase font-times font-semibold">
             {formData.subject_name || "SUBJECT NAME"}
           </p>
 
-          <p className="uppercase font-semibold">
+          <p className="uppercase font-times font-semibold">
             {formData.subject_code || "SUBJECT CODE"}
           </p>
 
@@ -72,11 +72,11 @@ const PresentationPreview = ({ formData }) => {
         {/* ================= STUDENT ================= */}
         <div className="space-y-1">
 
-          <p className="text-sm text-[#A50021] font-bold">
+          <p className="text-xl font-times text-[#A50021] font-bold">
             PRESENTED BY
           </p>
 
-          <p className="text-xl uppercase font-semibold">
+          <p className="textlg font-times uppercase font-semibold">
             {formData.name || "STUDENT NAME"}
           </p>
 
@@ -97,7 +97,7 @@ const PresentationPreview = ({ formData }) => {
 
         {/* ================= TEACHER ================= */}
         <div>
-          <p className="font-semibold uppercase">
+          <p className="font-semibold font-times uppercase">
             Name of the Teacher: {formData.teacher_name || ""}
           </p>
         </div>
