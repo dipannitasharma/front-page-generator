@@ -119,15 +119,15 @@ const Home = () => {
                     <div
                         ref={previewRef}
                         className="
-              flex-1
-              flex
-              justify-center
-              items-start
-              overflow-auto
-              bg-[#0F0F0F]
-              mt-4 lg:mt-0
-            "
-                    >
+                        flex-1
+                        flex
+                        justify-center
+                        items-start
+                        overflow-auto
+                        bg-[#0F0F0F]
+                        mt-4 lg:mt-0
+                      "
+                              >
                         {/* HEIGHT HOLDER */}
                         <div
                             style={{
@@ -152,6 +152,8 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
+                    
+                    
                     
                 </div>
                 
