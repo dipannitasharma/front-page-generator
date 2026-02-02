@@ -191,7 +191,7 @@ const Form = ({ formData, setFormData }) => {
 
   <input
     type="text"
-    className="w-full p-2 border rounded-lg mt-1 bg-[#1f1f1f] focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
+    className="w-full p-2 border rounded mt-1 bg-[#3D3D3D] focus:ring-2 focus:ring-blue-500 focus:outline-none transition"
     placeholder="Search by subject name or code..."
     value={formData.subject_name}
     onFocus={() => setShowDropdown(true)}
