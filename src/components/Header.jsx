@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (path) =>
+    location.pathname === path;
 
   return (
     <header
@@ -26,24 +30,56 @@ const Header = () => {
         relative
       "
     >
-      {/* LEFT: APP NAME */}
-      <div className="flex flex-col justify-center items-end">
+      {/* ================= LEFT: APP NAME ================= */}
+      <div className="flex items-center">
         <h1 className="text-lg sm:text-xl font-bold text-blue-300 drop-shadow-sm">
           CA Front Page Generator
         </h1>
-
-        {/* <p className="text-white text-xs">
-          By Dipannita Sharma
-        </p> */}
       </div>
 
-      {/* RIGHT */}
+      {/* ================= CENTER: DESKTOP NAV ================= */}
+      <nav className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+
+        <Link
+          to="/"
+          className={`
+            font-medium
+            transition
+            ${
+              isActive("/")
+                ? "text-blue-400"
+                : "text-white/80 hover:text-white"
+            }
+          `}
+        >
+          Home
+        </Link>
+
+        <Link
+          to="/merge"
+          className={`
+            font-medium
+            transition
+            ${
+              isActive("/merge")
+                ? "text-blue-400"
+                : "text-white/80 hover:text-white"
+            }
+          `}
+        >
+          Merge PDFs
+        </Link>
+
+      </nav>
+
+      {/* ================= RIGHT ================= */}
       <div className="flex items-center gap-2">
 
-        {/* HAMBURGER MENU BUTTON */}
+        {/* MOBILE HAMBURGER */}
         <button
           onClick={() => setOpen(!open)}
           className="
+            lg:hidden
             p-2
             rounded-md
 
@@ -60,11 +96,10 @@ const Header = () => {
           "
           aria-label="Menu"
         >
-          {/* Hamburger Icon */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="10"
-            height="10"
+            width="18"
+            height="18"
             viewBox="0 0 22 22"
             fill="none"
             stroke="currentColor"
@@ -78,7 +113,7 @@ const Header = () => {
           </svg>
         </button>
 
-        {/* GITHUB ICON */}
+        {/* GITHUB */}
         <a
           href="https://github.com/dipannitasharma"
           target="_blank"
@@ -95,11 +130,10 @@ const Header = () => {
           "
           aria-label="GitHub Profile"
         >
-          {/* GitHub SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="28"
-            height="28"
+            width="26"
+            height="26"
             viewBox="0 0 24 24"
             fill="currentColor"
           >
@@ -109,10 +143,11 @@ const Header = () => {
 
       </div>
 
-      {/* DROPDOWN MENU */}
+      {/* ================= MOBILE DROPDOWN ================= */}
       {open && (
         <div
           className="
+            lg:hidden
             absolute
             top-full
             right-4
@@ -130,7 +165,6 @@ const Header = () => {
             z-50
           "
         >
-          {/* HOME */}
           <Link
             to="/"
             onClick={() => setOpen(false)}
@@ -144,7 +178,6 @@ const Header = () => {
             🏠 Home
           </Link>
 
-          {/* MERGE */}
           <Link
             to="/merge"
             onClick={() => setOpen(false)}
@@ -159,7 +192,6 @@ const Header = () => {
           </Link>
         </div>
       )}
-
     </header>
   );
 };
