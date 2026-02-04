@@ -14,8 +14,8 @@ const PresentationPreview = ({ formData }) => {
       <div
         id="presentation-slide"
         className="
-          w-[960px]
-          h-[600px]
+          w-240
+          h-150
           p-12
           flex
           flex-col
