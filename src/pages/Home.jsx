@@ -71,7 +71,7 @@ const Home = () => {
             <div className="min-h-[calc(100vh-64px)] px-3 lg:px-8 py-4">
                 <div className="h-full w-full flex flex-col lg:flex-row gap-6 mx-auto">
                     {/* ================= LEFT PANEL ================= */}
-                    <div className="w-full lg:w-[420px] bg-[#2F2F2F] rounded-2xl flex flex-col">
+                    <div className="w-full lg:w-105 bg-[#2F2F2F] rounded-2xl flex flex-col">
                         <div className="p-4">
                             <div className="bg-[#3d3d3d] p-4 rounded-xl text-gray-200">
                                 <Form
