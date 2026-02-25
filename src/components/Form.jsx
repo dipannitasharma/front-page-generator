@@ -250,7 +250,7 @@ const Form = ({ formData, setFormData }) => {
             onMouseDown={() => {
               setFormData({
                 ...formData,
-                subject_name: `${sub.name} (${sub.code})`,
+                subject_name: sub.name,
                 subject_code: sub.code,
               });
 
