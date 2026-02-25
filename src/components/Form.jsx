@@ -431,7 +431,7 @@ const Form = ({ formData, setFormData }) => {
           <label className="text-sm font-medium">Teacher</label>
 
           <input
-            className="w-full p-2 border rounded mt-1"
+            className="w-full p-2 border rounded mt-1 uppercase"
             value={formData.teacher_name}
             onChange={(e) =>
               setFormData({
