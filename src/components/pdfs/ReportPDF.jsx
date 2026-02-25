@@ -13,6 +13,7 @@ import {
 import logo from "../../assets/future.png";
 import TIMES from "../../assets/fonts/TIMES.TTF";
 import TIMES_BOLD from "../../assets/fonts/TIMESBD.TTF";
+
 Font.register({
   family: "TimesNewRoman",
   fonts: [
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   page: {
     paddingHorizontal: 60,
     paddingVertical: 50,
-    fontFamily: "Helvetica", // default
+    fontFamily: "Helvetica",
   },
 
   wrapper: {
@@ -35,18 +36,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
 
-  top: {
-    alignItems: "center",
-  },
-
-  middle: {
-    alignItems: "center",
-  },
-
-  bottom: {
-    alignItems: "center",
-    
-  },
+  top: { alignItems: "center" },
+  middle: { alignItems: "center" },
+  bottom: { alignItems: "center" },
 
   logo: {
     width: 200,
@@ -63,21 +55,18 @@ const styles = StyleSheet.create({
   small_cc: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
     marginTop: 6,
   },
 
   small_under: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 5,
     marginTop: 7,
   },
 
   small_makaut: {
     fontSize: 16,
     fontWeight: "bold",
-    marginBottom: 2,
     marginTop: 5,
   },
 
@@ -86,8 +75,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     textTransform: "uppercase",
   },
-
-  /* ---------- TIMES NEW ROMAN ---------- */
 
   assessment: {
     marginTop: 18,
@@ -117,28 +104,11 @@ const styles = StyleSheet.create({
     marginTop: 6,
     fontSize: 15,
     textTransform: "uppercase",
-    marginBottom: 2,
     fontFamily: "TimesNewRoman",
-  },
-
-  teacher: {
-    marginTop: 20,
-    fontSize: 13,
-    fontWeight: "bold",
-    fontFamily: "TimesNewRoman",
-  },
-
-  /* ---------- NORMAL ---------- */
-
-  session: {
-    marginTop: 20,
-    fontSize: 18,
-    fontWeight: "bold",
-    color: "#0335CD",
   },
 
   roll: {
-    marginTop: 2,
+    marginTop: 8,
     fontSize: 13,
   },
 
@@ -148,13 +118,30 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#0033CC",
   },
+
   gray: {
-  color: "#6B7280",   // Tailwind gray-500
-},
+    color: "#6B7280",
+  },
 
   dept: {
-    marginTop: 5,
+    marginTop: 12,
     fontSize: 13,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+  },
+
+  teacher: {
+    marginTop: 12,
+    fontSize: 13,
+    fontWeight: "bold",
+    fontFamily: "TimesNewRoman",
+  },
+
+  session: {
+    marginTop: 20,
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#0335CD",
   },
 });
 
@@ -162,127 +149,90 @@ const ReportPDF = ({ data }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-
         <View style={styles.wrapper}>
 
-          {/* TOP SECTION */}
+          {/* ================= TOP ================= */}
           <View style={styles.top}>
-
             <Image src={logo} style={styles.logo} />
 
             <Text style={styles.college}>
               FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
             </Text>
 
-           <View style={{ marginTop: 5 }}><Text style={styles.small_cc}>[CC – 148]</Text></View>
-           <View style={{ marginTop: 6 }}><Text style={styles.small_under}>UNDER</Text></View>
-           <View style={{ marginTop: 4 }}><Text style={styles.small_makaut}>MAKAUT, WB</Text></View>
+            <Text style={styles.small_cc}>[CC – 148]</Text>
+            <Text style={styles.small_under}>UNDER</Text>
+            <Text style={styles.small_makaut}>MAKAUT, WB</Text>
+          </View>
+
+          {/* ================= MIDDLE ================= */}
+          <View style={styles.middle}>
+
+            {/* TITLE */}
+            <Text style={styles.title}>
+              {data.title || "TITLE OF THE PRESENTATION"}
+            </Text>
+
+            {/* ASSESSMENT */}
+            <Text style={styles.assessment}>
+              CONTINUOUS ASSESSMENT #
+              {data.assessment === "CA1" ? "1" : "2"}
+            </Text>
+
+            {/* SUBJECT */}
+            <Text style={styles.subject}>
+              {data.subject_name || "SUBJECT NAME"}
+            </Text>
+
+            <Text style={styles.subject}>
+              {data.subject_code || "SUBJECT CODE"}
+            </Text>
+
+            {/* SESSION */}
+            <Text style={styles.session}>
+              Academic Session: {data.session || "2025-26"}
+            </Text>
 
           </View>
 
-
-          {/* MIDDLE SECTION */}
-          {/* ================= MIDDLE ================= */}
-<View style={styles.middle}>
-
-  {/* ---------- ZONE 1 : TITLE ---------- */}
-  <View
-    style={{
-      paddingTop: 10,
-      paddingBottom: 10,
-      alignItems: "center",
-    }}
-  >
-    <Text style={styles.title}>
-      {data.title || "TITLE OF THE PRESENTATION"}
-    </Text>
-  </View>
-
-
-  {/* ---------- ZONE 2 : ASSESSMENT + SUBJECT ---------- */}
-  <View
-    style={{
-      paddingTop: 10,
-      paddingBottom: 10,
-      alignItems: "center",
-    }}
-  >
-
-    <Text style={styles.assessment}>
-      CONTINUOUS ASSESSMENT #2
-    </Text>
-
-    <Text style={styles.subject}>
-                  {data.subject_name || "SUBJECT NAME"}
-                </Text>
-    
-                <Text style={styles.subject}>
-                  {data.subject_code || "SUBJECT CODE"}
-                </Text>
-
-  </View>
-
-
-  {/* ---------- ZONE 3 : SESSION ---------- */}
-    <View
-      style={{
-        paddingTop: 50,
-        paddingBottom: 30,
-        alignItems: "center",
-      }}
-    >
-      <Text style={styles.session}>
-        Academic Session: {data.session || "2025-26"}
-      </Text>
-    </View>
-
-  </View>
-
-
-            {/* BOTTOM SECTION */}
+          {/* ================= BOTTOM ================= */}
           <View style={styles.bottom}>
 
             <Text style={styles.submitted}>
               SUBMITTED BY
             </Text>
 
-            <Text style={{ ...styles.name, marginTop: 10 }}>
+            <Text style={styles.name}>
               {data.name || "NAME OF THE STUDENT"}
             </Text>
 
-            <Text style={{ ...styles.roll, marginTop: 10 }}>
+            <Text style={styles.roll}>
               {data.university_roll || "UNIVERSITY ROLL NO."}
             </Text>
 
-           <View style={{ flexDirection: "row", marginTop: 10 }}>
+            <View style={{ flexDirection: "row", marginTop: 8 }}>
+              <Text style={[styles.year, styles.gray]}>
+                {data.year}
+              </Text>
+              <Text style={styles.year}> Year : </Text>
+              <Text style={[styles.year, styles.gray]}>
+                {data.semester}
+              </Text>
+              <Text style={styles.year}> Semester</Text>
+            </View>
 
-  <Text style={[styles.year, styles.gray]}>
-    {data.year}
-  </Text>
+            {/* ✅ DEPARTMENT ADDED HERE */}
+           <Text style={styles.dept}>
+  {data.department ? data.department.toUpperCase() : ""}
+</Text>
 
-  <Text style={styles.year}>
-    {" "}Year :{" "}
-  </Text>
-
-  <Text style={[styles.year, styles.gray]}>
-    {data.semester}
-  </Text>
-
-  <Text style={styles.year}>
-    {" "}Semester
-  </Text>
-
-</View>
-
-
-            <Text style={{ ...styles.teacher, marginTop: 15 }}>
+            {/* TEACHER */}
+            <Text style={styles.teacher}>
               NAME OF THE TEACHER: {data.teacher_name || ""}
             </Text>
 
           </View>
 
         </View>
-
       </Page>
     </Document>
   );
