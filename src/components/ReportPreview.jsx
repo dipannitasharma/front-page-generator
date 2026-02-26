@@ -24,7 +24,7 @@ const ReportPreview = ({ formData }) => {
                 className="h-24 mb-6 object-contain"
               />
 
-              <h2 className="text-xl font-bold text-[#000099]">
+              <h2 className="text-lg font-bold text-[#000099]">
                 FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
               </h2>
 

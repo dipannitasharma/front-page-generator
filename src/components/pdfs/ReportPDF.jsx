@@ -24,7 +24,7 @@ Font.register({
 
 const styles = StyleSheet.create({
   page: {
-    padding:30,
+    padding: 45, // outer white margin
     backgroundColor: "#FFFFFF",
   },
 
@@ -32,7 +32,8 @@ const styles = StyleSheet.create({
     flex: 1,
     borderWidth: 2,
     borderColor: "black",
-    padding: 40,
+    paddingHorizontal: 50,
+    paddingVertical: 50,
     flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
@@ -41,21 +42,20 @@ const styles = StyleSheet.create({
 
   logo: {
     width: 200,
-    marginBottom: 15,
+    marginBottom: 25,
   },
 
   college: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: "bold",
     color: "#000099",
-    marginBottom: 6,
+    marginBottom: 8,
   },
 
   small: {
-    fontSize: 15,
+    fontSize: 13,
     fontWeight: "bold",
-    marginTop: 4,
-    marginBottom: 2,
+    marginTop: 5,
   },
 
   title: {
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
 
   assessment: {
-    marginTop: 35,
+    marginTop: 45,
     fontSize: 18,
     fontWeight: "bold",
     color: "#0000FF",
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
 
   subject: {
-    marginTop: 6,
+    marginTop: 8,
     fontSize: 14,
     fontWeight: "bold",
     fontFamily: "TimesNewRoman",
@@ -81,34 +81,33 @@ const styles = StyleSheet.create({
   },
 
   session: {
-    marginTop: 35,
-    fontSize: 20,
+    marginTop: 50,
+    fontSize: 14,
     fontWeight: "bold",
     color: "#0000FF",
   },
 
   submitted: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
     color: "#A50021",
     fontFamily: "TimesNewRoman",
-    marginBottom: 30,
   },
 
   name: {
-    marginTop: 10,
+    marginTop: 12,
     fontSize: 16,
     textTransform: "uppercase",
     fontFamily: "TimesNewRoman",
   },
 
   roll: {
-    marginTop: 6,
+    marginTop: 8,
     fontSize: 13,
   },
 
   year: {
-    marginTop: 6,
+    marginTop: 8,
     fontSize: 14,
     fontWeight: "bold",
     color: "#0000FF",
@@ -122,8 +121,7 @@ const styles = StyleSheet.create({
   },
 
   teacher: {
-    marginTop: 25,
-    marginBottom: 20,
+    marginTop: 45,
     fontSize: 13,
     fontWeight: "bold",
     fontFamily: "TimesNewRoman",
@@ -137,12 +135,14 @@ const ReportPDF = ({ data }) => {
       <Page size="A4" style={styles.page}>
         <View style={styles.borderBox}>
 
-          {/* TOP */}
+          {/* TOP SECTION */}
           <View style={{ alignItems: "center" }}>
             <Image src={logo} style={styles.logo} />
+
             <Text style={styles.college}>
               FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
             </Text>
+
             <Text style={styles.small}>[CC – 148]</Text>
             <Text style={styles.small}>UNDER</Text>
             <Text style={styles.small}>MAKAUT, WB</Text>
@@ -169,17 +169,17 @@ const ReportPDF = ({ data }) => {
             </Text>
           </View>
 
-          {/* BOTTOM */}
+          {/* BOTTOM SECTION */}
           <View style={{ alignItems: "center" }}>
             <Text style={styles.submitted}>
               REPORT SUBMITTED BY
             </Text>
 
-            <Text style={{ ...styles.name, marginBottom: 8 }}>
+            <Text style={styles.name}>
               {data.name || "NAME OF THE STUDENT"}
             </Text>
 
-            <Text style={{ ...styles.roll, marginBottom: 5 }}>
+            <Text style={styles.roll}>
               {data.university_roll || "UNIVERSITY ROLL NO."}
             </Text>
 
@@ -192,7 +192,7 @@ const ReportPDF = ({ data }) => {
             </Text>
 
             <Text style={styles.teacher}>
-              NAME OF THE SUBJECT TEACHER: {data.teacher_name || ""}
+              NAME OF THE TEACHER: {data.teacher_name || ""}
             </Text>
           </View>
 
