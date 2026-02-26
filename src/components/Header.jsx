@@ -28,8 +28,8 @@ const Header = () => {
     >
       {/* ================= LEFT: APP NAME ================= */}
       <div className="flex items-center">
-        <h1 className="text-lg sm:text-xl font-bold text-blue-300 drop-shadow-sm">
-          CA Front Page Generator
+        <h1 className="text-lg sm:text-xl font-bold text-blue-300 drop-shadow-sm uppercase">
+          CA Front Page Generator <span className="text-sm sm:text-lg lowercase opacity-80">v1.1</span>
         </h1>
       </div>
 

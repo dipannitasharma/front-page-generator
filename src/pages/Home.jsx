@@ -81,7 +81,6 @@ const Home = () => {
                                 />
                             </div>
                         </div>
-
                         <div className="p-6 m-6 flex gap-3 justify-center bg-[#3d3d3d] rounded-2xl">
                            {formData.assessment === "CA1" && (
                                     <button
