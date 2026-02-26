@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { version } from "../data.js";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ const Header = () => {
       {/* ================= LEFT: APP NAME ================= */}
       <div className="flex items-center">
         <h1 className="text-lg sm:text-xl font-bold text-blue-300 drop-shadow-sm uppercase">
-          CA Front Page Generator <span className="text-sm sm:text-lg lowercase opacity-80">v1.1</span>
+          CA Front Page Generator <span className="text-sm sm:text-lg lowercase opacity-80">v{version}</span>
         </h1>
       </div>
 
