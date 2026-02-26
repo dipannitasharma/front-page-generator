@@ -32,6 +32,7 @@ const Home = () => {
         department: "",
         session: "",
         assessment: "CA1",
+        fileName: "",
     });
 
     const [scale, setScale] = useState(1);
@@ -82,36 +83,45 @@ const Home = () => {
                         </div>
 
                         <div className="p-6 m-6 flex gap-3 justify-center bg-[#3d3d3d] rounded-2xl">
-                            {formData.assessment === "CA1" && (
-                                <button
-                                    onClick={() => generatePPTX(formData)}
-                                    className="px-4 py-2 bg-green-600 text-white rounded-lg"
-                                >
-                                    Download PPTX
-                                </button>
-                            )}
+                           {formData.assessment === "CA1" && (
+                                    <button
+                                        onClick={() =>
+                                        generatePPTX(
+                                            formData,
+                                            formData.fileName && formData.fileName.trim() !== ""
+                                            ? `${formData.fileName.replace(/[^a-z0-9]/gi, "_")}.pptx`
+                                            : `${formData.name || "Presentation"}_${formData.subject_code || ""}_${formData.assessment}.pptx`
+                                        )
+                                        }
+                                        className="px-4 py-2 bg-green-600 text-white rounded-lg"
+                                    >
+                                        Download PPTX
+                                    </button>
+                                    )}
 
                             <PDFDownloadLink
-                                document={
-                                    formData.assessment === "CA1" ? (
+                                    document={
+                                        formData.assessment === "CA1" ? (
                                         <PresentationPDF data={formData} />
-                                    ) : (
+                                        ) : (
                                         <ReportPDF data={formData} />
-                                    )
-                                }
-                                fileName="file.pdf"
-                            >
-                                {({ loading }) => (
-                                    <button
+                                        )
+                                    }
+                                    fileName={
+                                        formData.fileName && formData.fileName.trim() !== ""
+                                        ? `${formData.fileName.replace(/[^a-z0-9]/gi, "_")}.pdf`
+                                        : `${formData.name || "Report"}_${formData.subject_code || ""}_${formData.assessment}.pdf`
+                                    }
+                                    >
+                                    {({ loading }) => (
+                                        <button
                                         disabled={loading}
                                         className="px-4 py-2 bg-blue-600 text-white rounded-lg disabled:opacity-60"
-                                    >
-                                        {loading
-                                            ? "Preparing..."
-                                            : "Download PDF"}
-                                    </button>
-                                )}
-                            </PDFDownloadLink>
+                                        >
+                                        {loading ? "Preparing..." : "Download PDF"}
+                                        </button>
+                                    )}
+                                    </PDFDownloadLink>
                         </div>
                     </div>
 

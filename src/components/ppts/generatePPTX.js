@@ -1,6 +1,6 @@
 import PptxGenJS from "pptxgenjs";
 
-const generatePPTX = (data) => {
+const generatePPTX = (data, customFileName) => {
   const pptx = new PptxGenJS();
 
   // A4 Landscape
@@ -14,32 +14,29 @@ const generatePPTX = (data) => {
 
   const slide = pptx.addSlide();
 
-  // Background
   slide.background = { fill: "FFFFFF" };
 
   /* ================= LOGO ================= */
 
   slide.addImage({
-  path: "/future.png",
-  x: 5.6,
-  y: 0.25,
-  w: 1.8,
-});
+    path: "/future.png",
+    x: 5.6,
+    y: 0.25,
+    w: 1.8,
+  });
 
-// Push title down
-slide.addText(
-  "FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT",
-  {
-    x: 0.5,
-    y: 1.5,   // ← was 1.2
-    w: 12.3,
-    fontSize: 22,
-    bold: true,
-    align: "center",
-    color: "0000CC",
-  }
-);
-
+  slide.addText(
+    "FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT",
+    {
+      x: 0.5,
+      y: 1.5,
+      w: 12.3,
+      fontSize: 22,
+      bold: true,
+      align: "center",
+      color: "0000CC",
+    }
+  );
 
   slide.addText(
     "[CC – 148]\nUNDER\nMAKAUT, WB",
@@ -67,7 +64,7 @@ slide.addText(
   );
 
   slide.addText(
-    "CONTINUOUS ASSESSMENT #1",
+    `CONTINUOUS ASSESSMENT #${data.assessment === "CA1" ? "1" : "2"}`,
     {
       x: 0.5,
       y: 3.3,
@@ -142,8 +139,6 @@ slide.addText(
     }
   );
 
-  /* ================= TEACHER ================= */
-
   slide.addText(
     `NAME OF THE TEACHER: ${data.teacher_name}`,
     {
@@ -158,7 +153,12 @@ slide.addText(
 
   /* ================= SAVE ================= */
 
-  pptx.writeFile(`${data.subject_name || "Presentation"}.pptx`);
+  const finalFileName =
+    customFileName && customFileName.trim() !== ""
+      ? customFileName
+      : `${data.name || "Presentation"}_${data.subject_code || ""}_${data.assessment}.pptx`;
+
+  pptx.writeFile(finalFileName);
 };
 
 export default generatePPTX;

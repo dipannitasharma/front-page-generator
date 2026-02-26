@@ -81,57 +81,57 @@ const SUBJECTS = [
   { name: "Power Electronics", code: "PE-EC505C" },
   { name: "Soft Skill and Interpersonal Communication", code: "OE-EC506A" },
   { name: "Control System and Instrumentation", code: "EC601" },
-{ name: "Computer Network", code: "EC602" },
-{ name: "Economics for Engineers", code: "HS-HU601" },
-{ name: "Control and Instrumentation Laboratory", code: "EC691" },
-{ name: "Computer Network Lab", code: "EC692" },
-{ name: "Mini Project / Electronic Design Workshop", code: "EC681" },
-{ name: "Universal Human Values", code: "MC681" },
-{ name: "Principles of Management", code: "HS-HU701" },
-{ name: "Introduction to Data Science", code: "PCC-DS301" },
-{ name: "Microwave Theory and Technique", code: "PE-EC701A" },
-{ name: "Satellite Communication", code: "PE-EC701B" },
-{ name: "Mobile Communication and Networks", code: "PE-EC701C" },
-{ name: "Database Management Systems", code: "PCC-DS401" },
-{ name: "Adaptive Signal Processing", code: "PE-EC702A" },
-{ name: "Digital Image and Video Processing", code: "PE-EC702B" },
-{ name: "Neural Network and Fuzzy Logic Control", code: "PE-EC702C" },
-{ name: "Data Mining", code: "PCC-DS402" },
-{ name: "Embedded System", code: "PE-EC703A" },
-{ name: "Wireless Sensor Networks", code: "PE-EC703B" },
-{ name: "Wavelet Transforms", code: "PE-EC703C" },
-{ name: "Antennas and Propagation", code: "PE-EC801A" },
-{ name: "Fiber Optic Communication", code: "PE-EC801B" },
-{ name: "Error Correcting Codes", code: "PE-EC801C" },
-{ name: "Statistics for Data Science", code: "PCC-DS501" },
-{ name: "Mixed Signal Design", code: "PE-EC802A" },
-{ name: "Industrial Automation and Control", code: "PE-EC802B" },
-{ name: "VLSI Design Automation", code: "PE-EC802C" },
-{ name: "Theory of Computation", code: "PEC-DS501A" },
-{ name: "Internet of Things (IoT)", code: "OE-EC803A" },
-{ name: "Big Data Analysis", code: "OE-EC803B" },
-{ name: "Cyber Security", code: "OE-EC803C" },
-{ name: "Artificial Intelligence", code: "PCC-DS601" },
-{ name: "Data Communication and Computer Networks", code: "PCC-DS602" },
-{ name: "Big Data Technology", code: "PCC-DS603" },
-{ name: "Advanced Algorithms", code: "PEC-DS601A" },
-{ name: "Distributed Systems", code: "PEC-DS601B" },
-{ name: "Image Processing", code: "PEC-IT601D" },
-{ name: "Machine Learning", code: "PEC-DS601E" },
-{ name: "Quantum Computing", code: "PEC-DS701A" },
-{ name: "Cloud Computing", code: "PEC-DS701B" },
-{ name: "Digital Signal Processing", code: "PEC-DS701C" },
-{ name: "Multi-agent Intelligent Systems", code: "PEC-DS701D" },
-{ name: "Time Series Analysis and Forecasting", code: "PEC-DS701E" },
-{ name: "Data Visualization", code: "PEC-DS701F" },
-{ name: "Neural Networks and Deep Learning", code: "PEC-DS702A" },
-{ name: "Signal and Networks", code: "PEC-DS801A" },
-{ name: "Natural Language Processing", code: "PEC-DS801C" },
-{ name: "Computer Vision", code: "PEC-DS801D" },
-{ name: "Web and Internet Technology", code: "PEC-DS801E" },
-{ name: "Internet of Things", code: "PEC-DS801F" },
-{ name: "Big Data Analytics", code: "OEC-DS801A" },
-{name:"HUMAN RESOURCE DEVELOPMENT & ORGANIZATIONAL BEHAVIOUR",code:"OEC-IT601B"}
+  { name: "Computer Network", code: "EC602" },
+  { name: "Economics for Engineers", code: "HS-HU601" },
+  { name: "Control and Instrumentation Laboratory", code: "EC691" },
+  { name: "Computer Network Lab", code: "EC692" },
+  { name: "Mini Project / Electronic Design Workshop", code: "EC681" },
+  { name: "Universal Human Values", code: "MC681" },
+  { name: "Principles of Management", code: "HS-HU701" },
+  { name: "Introduction to Data Science", code: "PCC-DS301" },
+  { name: "Microwave Theory and Technique", code: "PE-EC701A" },
+  { name: "Satellite Communication", code: "PE-EC701B" },
+  { name: "Mobile Communication and Networks", code: "PE-EC701C" },
+  { name: "Database Management Systems", code: "PCC-DS401" },
+  { name: "Adaptive Signal Processing", code: "PE-EC702A" },
+  { name: "Digital Image and Video Processing", code: "PE-EC702B" },
+  { name: "Neural Network and Fuzzy Logic Control", code: "PE-EC702C" },
+  { name: "Data Mining", code: "PCC-DS402" },
+  { name: "Embedded System", code: "PE-EC703A" },
+  { name: "Wireless Sensor Networks", code: "PE-EC703B" },
+  { name: "Wavelet Transforms", code: "PE-EC703C" },
+  { name: "Antennas and Propagation", code: "PE-EC801A" },
+  { name: "Fiber Optic Communication", code: "PE-EC801B" },
+  { name: "Error Correcting Codes", code: "PE-EC801C" },
+  { name: "Statistics for Data Science", code: "PCC-DS501" },
+  { name: "Mixed Signal Design", code: "PE-EC802A" },
+  { name: "Industrial Automation and Control", code: "PE-EC802B" },
+  { name: "VLSI Design Automation", code: "PE-EC802C" },
+  { name: "Theory of Computation", code: "PEC-DS501A" },
+  { name: "Internet of Things (IoT)", code: "OE-EC803A" },
+  { name: "Big Data Analysis", code: "OE-EC803B" },
+  { name: "Cyber Security", code: "OE-EC803C" },
+  { name: "Artificial Intelligence", code: "PCC-DS601" },
+  { name: "Data Communication and Computer Networks", code: "PCC-DS602" },
+  { name: "Big Data Technology", code: "PCC-DS603" },
+  { name: "Advanced Algorithms", code: "PEC-DS601A" },
+  { name: "Distributed Systems", code: "PEC-DS601B" },
+  { name: "Image Processing", code: "PEC-IT601D" },
+  { name: "Machine Learning", code: "PEC-DS601E" },
+  { name: "Quantum Computing", code: "PEC-DS701A" },
+  { name: "Cloud Computing", code: "PEC-DS701B" },
+  { name: "Digital Signal Processing", code: "PEC-DS701C" },
+  { name: "Multi-agent Intelligent Systems", code: "PEC-DS701D" },
+  { name: "Time Series Analysis and Forecasting", code: "PEC-DS701E" },
+  { name: "Data Visualization", code: "PEC-DS701F" },
+  { name: "Neural Networks and Deep Learning", code: "PEC-DS702A" },
+  { name: "Signal and Networks", code: "PEC-DS801A" },
+  { name: "Natural Language Processing", code: "PEC-DS801C" },
+  { name: "Computer Vision", code: "PEC-DS801D" },
+  { name: "Web and Internet Technology", code: "PEC-DS801E" },
+  { name: "Internet of Things", code: "PEC-DS801F" },
+  { name: "Big Data Analytics", code: "OEC-DS801A" },
+  {name:"HUMAN RESOURCE DEVELOPMENT & ORGANIZATIONAL BEHAVIOUR",code:"OEC-IT601B"}
 ]
 const Form = ({ formData, setFormData }) => {
   const [showDropdown, setShowDropdown] = React.useState(false);
@@ -440,7 +440,24 @@ const Form = ({ formData, setFormData }) => {
               })
             }
           />
+          
         </div>
+        {/* FILE NAME */}
+          <div>
+            <label className="text-sm font-medium">Custom File Name</label>
+
+            <input
+              className="w-full p-2 border rounded mt-1"
+              placeholder="Optional (leave blank for auto name)"
+              value={formData.fileName}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  fileName: e.target.value,
+                })
+              }
+            />
+          </div>
 
       </div>
 
