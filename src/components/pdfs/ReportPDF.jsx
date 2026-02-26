@@ -24,60 +24,48 @@ Font.register({
 
 const styles = StyleSheet.create({
   page: {
-    paddingHorizontal: 60,
-    paddingVertical: 50,
-    fontFamily: "Helvetica",
+    padding:30,
+    backgroundColor: "#FFFFFF",
   },
 
-  wrapper: {
+  borderBox: {
     flex: 1,
+    borderWidth: 2,
+    borderColor: "black",
+    padding: 40,
+    flexDirection: "column",
     justifyContent: "space-between",
     alignItems: "center",
     textAlign: "center",
   },
 
-  top: { alignItems: "center" },
-  middle: { alignItems: "center" },
-  bottom: { alignItems: "center" },
-
   logo: {
     width: 200,
-    marginBottom: 12,
+    marginBottom: 15,
   },
 
   college: {
     fontSize: 15,
     fontWeight: "bold",
-    color: "#0000CC",
-    marginBottom: 4,
+    color: "#000099",
+    marginBottom: 6,
   },
 
-  small_cc: {
-    fontSize: 16,
+  small: {
+    fontSize: 15,
     fontWeight: "bold",
-    marginTop: 6,
-  },
-
-  small_under: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginTop: 7,
-  },
-
-  small_makaut: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginTop: 5,
+    marginTop: 4,
+    marginBottom: 2,
   },
 
   title: {
-    marginTop: 10,
-    fontSize: 15,
+    marginTop: 70,
+    fontSize: 16,
     textTransform: "uppercase",
   },
 
   assessment: {
-    marginTop: 18,
+    marginTop: 35,
     fontSize: 18,
     fontWeight: "bold",
     color: "#0000FF",
@@ -85,64 +73,61 @@ const styles = StyleSheet.create({
   },
 
   subject: {
-    marginTop: 10,
-    fontSize: 13,
-    fontWeight: "bold",
-    fontFamily: "TimesNewRoman",
-    textTransform: "uppercase",
-  },
-
-  submitted: {
-    marginTop: 25,
-    fontSize: 14,
-    fontWeight: "bold",
-    color: "#A50021",
-    fontFamily: "TimesNewRoman",
-  },
-
-  name: {
     marginTop: 6,
-    fontSize: 15,
-    textTransform: "uppercase",
-    fontFamily: "TimesNewRoman",
-  },
-
-  roll: {
-    marginTop: 8,
-    fontSize: 13,
-  },
-
-  year: {
-    marginTop: 4,
     fontSize: 14,
-    fontWeight: "bold",
-    color: "#0033CC",
-  },
-
-  gray: {
-    color: "#6B7280",
-  },
-
-  dept: {
-    marginTop: 12,
-    fontSize: 13,
-    textTransform: "uppercase",
-    fontWeight: "bold",
-  },
-
-  teacher: {
-    marginTop: 12,
-    fontSize: 13,
     fontWeight: "bold",
     fontFamily: "TimesNewRoman",
     textTransform: "uppercase",
   },
 
   session: {
-    marginTop: 20,
+    marginTop: 35,
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#0000FF",
+  },
+
+  submitted: {
     fontSize: 18,
     fontWeight: "bold",
-    color: "#0335CD",
+    color: "#A50021",
+    fontFamily: "TimesNewRoman",
+    marginBottom: 30,
+  },
+
+  name: {
+    marginTop: 10,
+    fontSize: 16,
+    textTransform: "uppercase",
+    fontFamily: "TimesNewRoman",
+  },
+
+  roll: {
+    marginTop: 6,
+    fontSize: 13,
+  },
+
+  year: {
+    marginTop: 6,
+    fontSize: 14,
+    fontWeight: "bold",
+    color: "#0000FF",
+  },
+
+  dept: {
+    marginTop: 6,
+    fontSize: 13,
+    textTransform: "uppercase",
+    fontWeight: "bold",
+  },
+
+  teacher: {
+    marginTop: 25,
+    marginBottom: 20,
+    fontSize: 13,
+    fontWeight: "bold",
+    fontFamily: "TimesNewRoman",
+    textTransform: "uppercase",
   },
 });
 
@@ -150,36 +135,27 @@ const ReportPDF = ({ data }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <View style={styles.wrapper}>
+        <View style={styles.borderBox}>
 
-          {/* ================= TOP ================= */}
-          <View style={styles.top}>
+          {/* TOP */}
+          <View style={{ alignItems: "center" }}>
             <Image src={logo} style={styles.logo} />
-
             <Text style={styles.college}>
               FUTURE INSTITUTE OF ENGINEERING AND MANAGEMENT
             </Text>
+            <Text style={styles.small}>[CC – 148]</Text>
+            <Text style={styles.small}>UNDER</Text>
+            <Text style={styles.small}>MAKAUT, WB</Text>
 
-            <Text style={styles.small_cc}>[CC – 148]</Text>
-            <Text style={styles.small_under}>UNDER</Text>
-            <Text style={styles.small_makaut}>MAKAUT, WB</Text>
-          </View>
-
-          {/* ================= MIDDLE ================= */}
-          <View style={styles.middle}>
-
-            {/* TITLE */}
             <Text style={styles.title}>
               {data.title || "TITLE OF THE PRESENTATION"}
             </Text>
 
-            {/* ASSESSMENT */}
             <Text style={styles.assessment}>
               CONTINUOUS ASSESSMENT #
               {data.assessment === "CA1" ? "1" : "2"}
             </Text>
 
-            {/* SUBJECT */}
             <Text style={styles.subject}>
               {data.subject_name || "SUBJECT NAME"}
             </Text>
@@ -188,49 +164,36 @@ const ReportPDF = ({ data }) => {
               {data.subject_code || "SUBJECT CODE"}
             </Text>
 
-            {/* SESSION */}
             <Text style={styles.session}>
               Academic Session: {data.session || "2025-26"}
             </Text>
-
           </View>
 
-          {/* ================= BOTTOM ================= */}
-          <View style={styles.bottom}>
-
+          {/* BOTTOM */}
+          <View style={{ alignItems: "center" }}>
             <Text style={styles.submitted}>
-              SUBMITTED BY
+              REPORT SUBMITTED BY
             </Text>
 
-            <Text style={styles.name}>
+            <Text style={{ ...styles.name, marginBottom: 8 }}>
               {data.name || "NAME OF THE STUDENT"}
             </Text>
 
-            <Text style={styles.roll}>
+            <Text style={{ ...styles.roll, marginBottom: 5 }}>
               {data.university_roll || "UNIVERSITY ROLL NO."}
             </Text>
 
-            <View style={{ flexDirection: "row", marginTop: 8 }}>
-              <Text style={[styles.year, styles.gray]}>
-                {data.year}
-              </Text>
-              <Text style={styles.year}> Year : </Text>
-              <Text style={[styles.year, styles.gray]}>
-                {data.semester}
-              </Text>
-              <Text style={styles.year}> Semester</Text>
-            </View>
-
-            {/* ✅ DEPARTMENT ADDED HERE */}
-           <Text style={styles.dept}>
-  {data.department ? data.department.toUpperCase() : ""}
-</Text>
-
-            {/* TEACHER */}
-            <Text style={styles.teacher}>
-              NAME OF THE TEACHER: {data.teacher_name || ""}
+            <Text style={styles.year}>
+              {data.year} Year : {data.semester} Semester
             </Text>
 
+            <Text style={styles.dept}>
+              {data.department?.toUpperCase()}
+            </Text>
+
+            <Text style={styles.teacher}>
+              NAME OF THE SUBJECT TEACHER: {data.teacher_name || ""}
+            </Text>
           </View>
 
         </View>
