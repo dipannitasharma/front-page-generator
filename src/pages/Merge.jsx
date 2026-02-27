@@ -43,7 +43,6 @@ const Merge = () => {
     setFiles((prev) => [...prev, ...processed]);
     e.target.value = "";
   };
-
   /*PREVIEW*/
   const createPreview = async (pdf) => {
     const temp = await PDFDocument.create();
@@ -157,7 +156,7 @@ const Merge = () => {
       const a = document.createElement("a");
       a.href = url;
 
-      // ✅ Custom filename logic
+      //Custom filename logic
       a.download = customName
         ? `${customName}.pdf`
         : "merged.pdf";
