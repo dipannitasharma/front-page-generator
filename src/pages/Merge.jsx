@@ -7,10 +7,10 @@ const Merge = () => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState(0);
-
+  const [customName, setCustomName] = useState(""); // ✅ added
   const fileInputRef = useRef(null);
 
-  /* ================= ADD FILES ================= */
+  /*ADD FILES*/
   const handleSelect = async (e) => {
     const selected = Array.from(e.target.files);
 
@@ -27,7 +27,6 @@ const Merge = () => {
         const pdf = await PDFDocument.load(bytes);
 
         const pageCount = pdf.getPageCount();
-
         const preview = await createPreview(pdf);
 
         return {
@@ -42,14 +41,12 @@ const Merge = () => {
     );
 
     setFiles((prev) => [...prev, ...processed]);
-
     e.target.value = "";
   };
 
-  /* ================= PREVIEW ================= */
+  /*PREVIEW*/
   const createPreview = async (pdf) => {
     const temp = await PDFDocument.create();
-
     const [page] = await temp.copyPages(pdf, [0]);
     temp.addPage(page);
 
@@ -60,45 +57,36 @@ const Merge = () => {
     );
   };
 
-  /* ================= MOVE (MOBILE) ================= */
   const moveUp = (index) => {
     if (index === 0) return;
-
     const list = [...files];
-
     [list[index - 1], list[index]] = [
       list[index],
       list[index - 1],
     ];
-
     setFiles(list);
   };
 
   const moveDown = (index) => {
     if (index === files.length - 1) return;
-
     const list = [...files];
-
     [list[index + 1], list[index]] = [
       list[index],
       list[index + 1],
     ];
-
     setFiles(list);
   };
 
-  /* ================= REMOVE ================= */
   const removeFile = (index) => {
     setFiles(files.filter((_, i) => i !== index));
   };
 
-  /* ================= CLEAR ================= */
   const clearAll = () => {
     setFiles([]);
     setProgress(0);
+    setCustomName("");
   };
 
-  /* ================= PAGE RANGE ================= */
   const updateRange = (index, value) => {
     const list = [...files];
     list[index].range = value;
@@ -111,7 +99,6 @@ const Merge = () => {
     range.split(",").forEach((part) => {
       if (part.includes("-")) {
         const [s, e] = part.split("-").map(Number);
-
         for (let i = s; i <= e && i <= max; i++) {
           pages.add(i - 1);
         }
@@ -139,7 +126,6 @@ const Merge = () => {
 
       for (let i = 0; i < files.length; i++) {
         const item = files[i];
-
         const bytes = await item.file.arrayBuffer();
         const pdf = await PDFDocument.load(bytes);
 
@@ -170,11 +156,17 @@ const Merge = () => {
 
       const a = document.createElement("a");
       a.href = url;
-      a.download = "merged.pdf";
+
+      // ✅ Custom filename logic
+      a.download = customName
+        ? `${customName}.pdf`
+        : "merged.pdf";
+
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
 
       URL.revokeObjectURL(url);
-
       setLoading(false);
     } catch (err) {
       console.error(err);
@@ -185,20 +177,8 @@ const Merge = () => {
 
   return (
     <div className="pt-24 flex justify-center px-4">
+      <div className="w-full max-w-2xl bg-[#323232] text-gray-200 p-6 rounded-xl border shadow-lg">
 
-      <div
-        className="
-          w-full
-          max-w-2xl
-          bg-[#323232]
-          text-gray-200
-          p-6
-          rounded-xl
-          border
-          shadow-lg
-        "
-      >
-        {/* TITLE */}
         <h2 className="text-xl font-semibold text-center mb-1">
           PDF Merger
         </h2>
@@ -207,54 +187,41 @@ const Merge = () => {
           Max {MAX_FILES} files • Reorder • Page Select • Preview
         </p>
 
-        {/* INPUT */}
+        {/* Custom File Name Input */}
+        {files.length > 0 && (
+          <input
+            type="text"
+            placeholder="Enter Custom File Name"
+            value={customName}
+            onChange={(e) => setCustomName(e.target.value)}
+            className="w-full mb-4 px-3 py-2 bg-[#222] border rounded outline-none text-sm"
+          />
+        )}
+
         <input
           type="file"
           accept="application/pdf"
           multiple
           ref={fileInputRef}
           onChange={handleSelect}
-          className="
-            w-full
-            mb-4
-            text-sm
-            file:mr-3
-            file:px-3
-            file:py-1.5
-            file:border-0
-            file:rounded
-            file:bg-purple-600
-            file:text-white
-            hover:file:bg-purple-700
-          "
+          className="w-full mb-4 text-sm file:mr-3 file:px-3 file:py-1.5 file:border-0 file:rounded file:bg-purple-600 file:text-white hover:file:bg-purple-700"
         />
 
-        {/* FILE LIST */}
+        {/* FILE LIST (UNCHANGED) */}
         {files.length > 0 && (
           <div className="mb-4 max-h-80 overflow-auto space-y-2">
-
             {files.map((item, i) => (
               <div
                 key={i}
-                className="
-                  flex
-                  gap-3
-                  bg-[#3a3a3a]
-                  p-2
-                  rounded
-                  border
-                "
+                className="flex gap-3 bg-[#3a3a3a] p-2 rounded border"
               >
-                {/* PREVIEW */}
                 <iframe
                   src={item.preview}
                   className="w-20 h-24 rounded bg-white"
                   title="preview"
                 />
 
-                {/* INFO */}
                 <div className="flex-1 min-w-0">
-
                   <p className="truncate text-sm font-medium">
                     {i + 1}. {item.name}
                   </p>
@@ -264,29 +231,17 @@ const Merge = () => {
                     {item.pages} pages
                   </p>
 
-                  {/* PAGE RANGE */}
                   <input
                     value={item.range}
                     onChange={(e) =>
                       updateRange(i, e.target.value)
                     }
                     placeholder="1-3,5"
-                    className="
-                      w-full
-                      px-2
-                      py-1
-                      text-xs
-                      bg-[#222]
-                      border
-                      rounded
-                      outline-none
-                    "
+                    className="w-full px-2 py-1 text-xs bg-[#222] border rounded outline-none"
                   />
                 </div>
 
-                {/* CONTROLS */}
                 <div className="flex flex-col gap-1">
-
                   <button
                     onClick={() => moveUp(i)}
                     className="px-2 bg-blue-500 rounded"
@@ -307,90 +262,56 @@ const Merge = () => {
                   >
                     ✕
                   </button>
-
                 </div>
               </div>
             ))}
-
           </div>
         )}
 
         {/* PROGRESS */}
         {loading && (
           <div className="mb-3">
-
             <div className="text-xs mb-1">
               Merging... {progress}%
             </div>
-
             <div className="w-full h-2 bg-gray-700 rounded">
-
               <div
                 style={{ width: `${progress}%` }}
                 className="h-full bg-purple-600 rounded transition-all"
               />
-
             </div>
-
           </div>
         )}
 
         {/* ACTIONS */}
         <div className="flex gap-2 flex-wrap">
-
-          {/* MERGE */}
           <button
             onClick={handleMerge}
             disabled={files.length < 2 || loading}
-            className="
-              flex-1
-              py-2
-              bg-purple-600
-              text-white
-              rounded
-              hover:bg-purple-700
-              disabled:opacity-50
-            "
+            className="flex-1 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 disabled:opacity-50"
           >
             {loading ? "Merging..." : "Merge PDFs"}
           </button>
 
-          {/* ADD MORE */}
           {files.length > 0 && (
-            <button
-              onClick={() => fileInputRef.current.click()}
-              className="
-                px-4
-                py-2
-                bg-blue-500
-                rounded
-                hover:bg-blue-600
-              "
-            >
-              + Add More
-            </button>
-          )}
+            <>
+              <button
+                onClick={() => fileInputRef.current.click()}
+                className="px-4 py-2 bg-blue-500 rounded hover:bg-blue-600"
+              >
+                + Add More
+              </button>
 
-          {/* CLEAR */}
-          {files.length > 0 && (
-            <button
-              onClick={clearAll}
-              className="
-                px-4
-                py-2
-                bg-gray-500
-                rounded
-                hover:bg-gray-600
-              "
-            >
-              Clear
-            </button>
+              <button
+                onClick={clearAll}
+                className="px-4 py-2 bg-gray-500 rounded hover:bg-gray-600"
+              >
+                Clear
+              </button>
+            </>
           )}
-
         </div>
-
       </div>
-
     </div>
   );
 };

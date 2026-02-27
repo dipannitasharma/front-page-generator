@@ -10,7 +10,7 @@ const Footer = () => {
         </p>
         {/* Center */}
         <div className="text-center text-xs text-gray-300 leading-relaxed">
-          <p>Always download for best results</p>
+          <p>Always Download For Best Results</p>
         </div>
         {/* Right */}
        {/* Right */}
